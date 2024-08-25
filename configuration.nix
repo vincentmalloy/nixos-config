@@ -49,11 +49,11 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -93,21 +93,23 @@
     initialPassword = "1";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-	nextcloud-client
-	keepassxc
+    nextcloud-client
+    keepassxc
     ];
   };
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "simon";
+  # services.displayManager.autoLogin.enable = true;
+  # services.displayManager.autoLogin.user = "simon";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  # systemd.services."getty@tty1".enable = false;
+  # systemd.services."autovt@tty1".enable = false;
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  programs.hyprland.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
