@@ -1,13 +1,12 @@
-# USAGE in your configuration.nix.
-# Update devices to match your hardware.
-# {
-#  imports = [ ./disko-config.nix ];
-#  disko.devices.disk.main.device = "/dev/sda";
-# }
 {
-  config.disko.devices = {
+  device ? throw "Set this to your disk device, e.g. /dev/sda",
+  ...
+}: {
+  disko.devices = {
     disk = {
       main = {
+        # will be overwritten by args if you use disko-install
+        inherit device;
         type = "disk";
         content = {
           type = "gpt";
@@ -17,7 +16,7 @@
               type = "EF02"; # for grub MBR
             };
             ESP = {
-              size = "1G";
+              size = "512M";
               type = "EF00";
               content = {
                 type = "filesystem";

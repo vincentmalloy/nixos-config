@@ -17,6 +17,7 @@
 			system = "x86_64-linux";
 			modules = [
 				disko.nixosModules.default
+				(import ./disko-config.nix { device = "/dev/nvme0n1"; })
 				./configuration.nix
 			];
 		};
