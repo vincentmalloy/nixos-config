@@ -16,8 +16,11 @@
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  # boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/grub";
+  boot.loader.grub.device = "/dev/nvme0n1";
+  # boot.loader.grub.useOSProber = true;
 
   networking.hostName = "voyager"; # Define your hostname.
   # networking.hostId = "2bce1f14"; # Needed for zfs
@@ -56,10 +59,10 @@
   # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "";
-  };
+  # services.xserver.xkb = {
+  #  layout = "de";
+  #  variant = "";
+  # };
 
   # Configure console keymap
   console.keyMap = "de";
@@ -121,6 +124,7 @@
   #  wget
 	git
   kitty
+  wofi
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
