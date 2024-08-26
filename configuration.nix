@@ -19,7 +19,7 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot/grub";
-  # boot.loader.grub.device = "/dev/nvme0n1";
+  boot.loader.grub.device = "/dev/nvme0n1";
   # boot.loader.grub.useOSProber = true;
 
   networking.hostName = "voyager"; # Define your hostname.
