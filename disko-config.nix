@@ -25,13 +25,6 @@
                 mountpoint = "/boot";
               };
             };
-            swap = {
-              size = "20G";
-              content = {
-                type = "swap";
-                resumeDevice = true;
-              };
-            };
             root = {
               size = "100%";
               content = {
