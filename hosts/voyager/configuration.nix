@@ -95,6 +95,7 @@
     packages = with pkgs; [
     nextcloud-client
     keepassxc
+    neovim
     ];
   };
 

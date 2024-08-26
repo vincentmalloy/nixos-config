@@ -9,16 +9,31 @@
 			url = "github:nix-community/disko";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		home-manager = {
+			url = "github:nix-community/home-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
   };
 
-  outputs = { self, nixpkgs, disko }: {
+  outputs = { self, nixpkgs, disko, home-manager }: {
 		nixosConfigurations = {
-			voyager = nixpkgs.lib.nixosSystem {
+			# voyager - home desktop
+		  voyager = nixpkgs.lib.nixosSystem {
+				specialArgs = {
+					username = "simon";
+					hostname = "voyager";
+				};
 				system = "x86_64-linux";
 				modules = [
 					disko.nixosModules.default
-					(import ./disko-config.nix { device = "/dev/nvme0n1"; })
-					./configuration.nix
+					(import ./hosts/voyager/disko-config.nix { device = "/dev/nvme0n1"; })
+					home-manager.nixosModules.home-manager
+					{
+						home-manager.useGlobalPkgs = true;
+						home-manager.useUserPackages = true;
+						home-manager.users.simon = { imports = [ ./users/simon/home.nix ./hosts/voyager/users/simon/home.nix ]; };
+					}
+					./hosts/voyager/configuration.nix
 				];
 			};
 		};
