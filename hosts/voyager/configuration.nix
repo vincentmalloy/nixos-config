@@ -93,9 +93,9 @@
     initialPassword = "1";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    nextcloud-client
-    keepassxc
-    neovim
+      nextcloud-client
+      keepassxc
+      neovim
     ];
   };
 
