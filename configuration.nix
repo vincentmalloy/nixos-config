@@ -56,10 +56,10 @@
   # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "";
-  };
+  # services.xserver.xkb = {
+  #  layout = "de";
+  #  variant = "";
+  # };
 
   # Configure console keymap
   console.keyMap = "de";
@@ -121,6 +121,7 @@
   #  wget
 	git
   kitty
+  wofi
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
