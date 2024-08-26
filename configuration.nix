@@ -16,8 +16,8 @@
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/grub";
-  boot.loader.grub.useOSProber = true;
+  # boot.loader.grub.device = "/dev/grub";
+  # boot.loader.grub.useOSProber = true;
 
   networking.hostName = "voyager"; # Define your hostname.
   # networking.hostId = "2bce1f14"; # Needed for zfs
