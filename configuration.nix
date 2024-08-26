@@ -8,9 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-	./disko-config.nix
     ];
-  disko.devices.disk.main.device = "/dev/nvme01";
+  # disko.devices.disk.main.device = "/dev/nvme01";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -19,8 +18,6 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.efi.efiSysMountPoint = "/boot/grub";
-  boot.loader.grub.device = "/dev/nvme0n1";
-  # boot.loader.grub.useOSProber = true;
 
   networking.hostName = "voyager"; # Define your hostname.
   # networking.hostId = "2bce1f14"; # Needed for zfs
