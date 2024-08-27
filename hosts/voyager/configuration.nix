@@ -99,6 +99,15 @@
     ];
   };
 
+  services = {
+    displayManager = {
+        sddm = {
+          enable = true;
+          wayland.enable = true;
+        };
+    };
+  };
+
   # Enable automatic login for the user.
   # services.displayManager.autoLogin.enable = true;
   # services.displayManager.autoLogin.user = "simon";
@@ -121,8 +130,21 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     git
-    kitty
+    # kitty
     wofi
+    adwaita-icon-theme
+    glib
+    gsettings-desktop-schemas
+    nwg-look
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
+  ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    commit-mono
+
+    (nerdfonts.override { fonts = [ "CommitMono" ]; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
