@@ -59,7 +59,9 @@
 		
 	};
 	
-	# home.packages = [
-	# 	pkgs.helix
-	# ];
+	home.packages = with pkgs; [
+		helix
+    kitty
+    wofi
+	];
 }
