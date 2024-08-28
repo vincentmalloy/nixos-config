@@ -32,6 +32,9 @@
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
 						home-manager.users.simon = { imports = [ ./users/simon/home.nix ./hosts/voyager/users/simon/home.nix ]; };
+						specialArgs = {
+							inherit inputs;
+						};
 					}
 					./hosts/voyager/configuration.nix
 				];

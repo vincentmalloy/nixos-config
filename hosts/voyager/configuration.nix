@@ -10,6 +10,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # include configuration modules
+      ./modules/gui
       ./modules/system
       ./modules/settings
       ./modules/software

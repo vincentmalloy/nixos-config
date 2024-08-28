@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   users.users.simon = {
     isNormalUser = true;
@@ -11,6 +11,4 @@
       neovim
     ];
   };
-  # services.displayManager.autoLogin.enable = true;
-  # services.displayManager.autoLogin.user = "simon";
 }
