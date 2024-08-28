@@ -5,6 +5,6 @@
     xwayland = {
       enable = true;
     };
-    portalPackage = pgs.xfg-desktop-portal-hyperland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 }

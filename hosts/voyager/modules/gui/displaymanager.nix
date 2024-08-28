@@ -3,8 +3,10 @@
   services = {
     xserver = {
       enable = true;
-      layout = "de";
-      xkbOptions = "caps:swapescape";
+      xkb = {
+        layout = "de";
+        options = "caps:swapescape";
+      };
     };
     displayManager = {
         sddm = {

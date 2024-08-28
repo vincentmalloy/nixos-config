@@ -15,7 +15,7 @@
 		};
   };
 
-  outputs = { self, nixpkgs, disko, home-manager }: {
+  outputs = { self, nixpkgs, disko, home-manager }@inputs: {
 		nixosConfigurations = {
 			# voyager - home desktop
 		  voyager = nixpkgs.lib.nixosSystem {
@@ -32,7 +32,7 @@
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
 						home-manager.users.simon = { imports = [ ./users/simon/home.nix ./hosts/voyager/users/simon/home.nix ]; };
-						specialArgs = {
+						home-manager.extraSpecialArgs = {
 							inherit inputs;
 						};
 					}
