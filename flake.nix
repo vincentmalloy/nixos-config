@@ -5,6 +5,10 @@
 		nixpkgs = {
 			url = "github:nixos/nixpkgs/nixos-unstable";
 		};
+		firefox-addons = {
+			url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		disko = {
 			url = "github:nix-community/disko";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -15,7 +19,7 @@
 		};
   };
 
-  outputs = { self, nixpkgs, disko, home-manager }@inputs: {
+  outputs = { self, nixpkgs, disko, home-manager, firefox-addons }@inputs: {
 		nixosConfigurations = {
 			# voyager - home desktop
 		  voyager = nixpkgs.lib.nixosSystem {
@@ -31,6 +35,7 @@
 					{
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
+						home-manager.backupFileExtension = "backup";
 						home-manager.users.simon = { imports = [ ./users/simon/home.nix ./hosts/voyager/users/simon/home.nix ]; };
 						home-manager.extraSpecialArgs = {
 							inherit inputs;

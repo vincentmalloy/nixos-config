@@ -22,6 +22,11 @@
 				"$mod, right, movefocus, r"
 				"$mod, up, movefocus, u"
 				"$mod, down, movefocus, d"
+				# move window
+				"$mod ALT, left, movewindow, l"
+				"$mod ALT, right, movewindow, r"
+				"$mod ALT, up, movewindow, u"
+				"$mod ALT, down, movewindow, d"
 			];
 			bindm = [
 				# move/resize windows
