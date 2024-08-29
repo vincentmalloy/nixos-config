@@ -13,11 +13,26 @@
 		userEmail = "25029432+vincentmalloy@users.noreply.github.com";
 	};
 
+	programs.zsh = {
+		enable = true;
+		autosuggestion.enable = true;
+		syntaxHighlighting.enable = true;
+		ohMyZsh = {
+			enable = true;
+			theme = "agnoster";
+			plugins = [
+				"git"
+				"history"
+				"wd"
+			];
+		};
+	};
+
 	programs.helix = {
 		enable = true;
 		defaultEditor = true;
 		settings = {
-			theme = "molokai";
+			theme = "voyager";
 			editor = {
 				true-color=true;
 				bufferline="multiple";
@@ -33,6 +48,12 @@
 				};
 			};
 		};
+		themes = {
+			voyager = {
+				inherits = "molokai";
+				"ui.background" = {};
+			};
+		};
 	};
 
 	programs.kitty = {
@@ -42,6 +63,10 @@
 			size = 11;
 		};
 		theme = "Monokai Soda";
+		settings = {
+			background_opacity = "0.5";
+			background = "#000000";
+		};
 	};
 
 	programs.firefox = {
