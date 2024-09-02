@@ -5,10 +5,6 @@
 		nixpkgs = {
 			url = "github:nixos/nixpkgs/nixos-unstable";
 		};
-		firefox-addons = {
-			url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 		disko = {
 			url = "github:nix-community/disko";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -17,15 +13,24 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		hyprland = {
+			type = "git";
+			url = "https://github.com/hyprwm/Hyprland";
+			submodules = true;
+		};
+		hyprpaper = {
+			url = "github:hyprwm/hyprpaper";
+		};
   };
 
-  outputs = { self, nixpkgs, disko, home-manager, firefox-addons }@inputs: {
+  outputs = { self, nixpkgs, disko, home-manager, hyprland, hyprpaper }@inputs: {
 		nixosConfigurations = {
 			# voyager - home desktop
 		  voyager = nixpkgs.lib.nixosSystem {
 				specialArgs = {
 					username = "simon";
 					hostname = "voyager";
+					inherit inputs;
 				};
 				system = "x86_64-linux";
 				modules = [

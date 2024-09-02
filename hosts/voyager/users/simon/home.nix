@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ inputs, lib, config, pkgs, ... }:
 
 {
 	home.packages = [
@@ -7,6 +7,7 @@
 
 	wayland.windowManager.hyprland = {
 		enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 		settings = {
 			"$mod" = "SUPER";
 			bind = [
@@ -54,6 +55,7 @@
 
 	services.hyprpaper = {
 		enable = true;
+    package = inputs.hyprpaper.packages.${pkgs.stdenv.hostPlatform.system}.hyprpaper;
 		settings = {
 			preload = [
 				"~/nixos-config/images/desktop/desktop_left.jpg"
