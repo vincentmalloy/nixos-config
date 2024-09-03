@@ -1,17 +1,22 @@
 { pkgs, ... }:
 let
-  # tokyo-night-sddm = pkgs.libsForQt5.callPackage ./tokyo-night-sddm.nix { inherit pkgs; };
-  sddm-astronaut-theme = pkgs.libsForQt5.callPackage ./sddm-astronaut-theme.nix { inherit pkgs; };
+  tokyo-night-sddm = pkgs.libsForQt5.callPackage ./tokyo-night-sddm.nix { inherit pkgs; };
 in
 {
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "sddm-astronaut-theme"; #elarun, maldives, maya
+    wayland.compositor = "kwin";
+    # settings = {
+    #   Wayland = {
+    #     CompositorCommand = "hyprland";
+    #   };
+    # };
+    theme = "tokyo-night-sddm"; #elarun, maldives, maya
   };
   environment.systemPackages = [
-    # pkgs.libsForQt5.qtgraphicaleffects
-    sddm-astronaut-theme
+    pkgs.libsForQt5.qtgraphicaleffects
+    tokyo-night-sddm
   ];
   # services = {
   #   xserver = {

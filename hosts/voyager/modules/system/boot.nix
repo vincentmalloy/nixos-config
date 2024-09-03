@@ -1,5 +1,7 @@
 { ... }:
 {
+  boot.plymouth.enable = true;
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;

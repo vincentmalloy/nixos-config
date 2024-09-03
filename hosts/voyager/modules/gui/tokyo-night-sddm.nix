@@ -11,10 +11,22 @@ pkgs.stdenv.mkDerivation rec {
     rev = "320c8e74ade1e94f640708eee0b9a75a395697c6";
     sha256 = "JRVVzyefqR2L3UrEK2iWyhUKfPMUNUnfRZmwdz05wL0=";
   };
-  dontBuild = true;
+  config = pkgs.writeText "theme.conf.user" ''
+    MainColor="#aaaaaa"
+    AccentColor="#fafafa"
+    Font="CommitMono Nerd Font"
+    RoundCorners="0"
+  '';
+  # dontBuild = true;
+  buildPhase = ''
+    buildDir=$PWD/tokyo-night-build
+    mkdir $buildDir
+    cp -r $src/* $buildDir
+    chmod +w $buildDir
+    cp $config "$buildDir/theme.conf.user"
+  '';
   installPhase = /* sh */ ''
     mkdir -p $out/share/sddm/themes
-    cp -aR $src $out/share/sddm/themes/tokyo-night-sddm
+    cp -aR $buildDir $out/share/sddm/themes/tokyo-night-sddm
   '';
-    # cp ${image} $out/share/sddm/themes/tokyo-night-sddm/Backgrounds/voyager.jpg
 }

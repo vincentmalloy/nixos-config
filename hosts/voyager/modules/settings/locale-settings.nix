@@ -16,5 +16,9 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  console.keyMap = "de";
+  console = {
+    keyMap = "de";
+    earlySetup = true;
+  };
+  
 }
