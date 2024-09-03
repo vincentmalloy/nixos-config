@@ -1,8 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
+    theme = "${import ./tokyo-night-sddm.nix { inherit pkgs; }}";
   };
   # services = {
   #   xserver = {
