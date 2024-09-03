@@ -35,15 +35,24 @@
       nup = "sudo nixos-rebuild switch --upgrade --recreate-lock-file --flake ${config.home.homeDirectory}/nixos-config";
       nre = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nixos-config";
     };
-    oh-my-zsh = {
-      enable = true;
-      theme = "agnoster";
-      plugins = [
-        "git"
-        "history"
-        "wd"
-      ];
-    };
+    # oh-my-zsh = {
+    #   enable = true;
+    #   theme = "agnoster";
+    #   plugins = [
+    #     "git"
+    #     "history"
+    #     "wd"
+    #   ];
+    # };
+  };
+
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = builtins.fromJSON(builtins.unsafeDiscardStringContext(builtins.readFile(builtins.fetchurl {
+      url = "https://gist.githubusercontent.com/vincentmalloy/4b85151d28b3025451f5634b6081019d/raw/omptheme.json";
+      sha256 = "0q1iil79vcfk2h19akww62v0d30f9yjpjhkwhyvkrn0rqvvb40h7";
+    })));
   };
 
   programs.helix = {
