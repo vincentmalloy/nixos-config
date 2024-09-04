@@ -11,3 +11,4 @@ cat <<eos > users/simon/fetch-omp-config.nix
   sha256 = $sha256;
 }
 eos
+rm tmp-omp-json
