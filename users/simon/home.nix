@@ -50,7 +50,7 @@
   };
 
   programs.oh-my-posh = let
-  configGIT = import ./fetch-omp-config.nix;
+  configGIT = import builtins.fromJSON (builtins.readFile "./fetch-omp-config.json");
   configJSON = builtins.readFile ( builtins.fetchGit (configGIT));
   in {
     enable = true;
