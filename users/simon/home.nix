@@ -51,8 +51,8 @@
   };
 
   programs.oh-my-posh = let
-  configGIT = import ./fetch-omp-config.nix;
-  configJSON = builtins.readFile ( builtins.fetchGit (configGIT));
+  configFETCH = import ./fetch-omp-config.nix;
+  configJSON = builtins.readFile ( builtins.fetchUrl (configFETCH));
   in {
     enable = true;
     enableZshIntegration = true;
