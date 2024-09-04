@@ -14,6 +14,7 @@
 
   home.packages = with pkgs; [
     helix
+    jq
   ];
 
   programs.git = {
@@ -49,14 +50,14 @@
     # };
   };
 
-  programs.oh-my-posh = let
-  configGIT = import builtins.fromJSON (builtins.readFile "./fetch-omp-config.json");
-  configJSON = builtins.readFile ( builtins.fetchGit (configGIT));
-  in {
-    enable = true;
-    enableZshIntegration = true;
-    settings = builtins.fromJSON ("${configJSON}/config.json");
-  };
+  # programs.oh-my-posh = let
+  # configGIT = builtins.fromJSON (builtins.readFile "./fetch-omp-config.json");
+  # configJSON = builtins.readFile ( builtins.fetchGit (configGIT));
+  # in {
+  #   enable = true;
+  #   enableZshIntegration = true;
+  #   settings = builtins.fromJSON ("${configJSON}/config.json");
+  # };
   
   programs.helix = {
     enable = true;
