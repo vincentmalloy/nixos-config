@@ -9,5 +9,6 @@
     gnumake
     ripgrep
     wget
+    nix-prefetch-scripts
   ];
 }

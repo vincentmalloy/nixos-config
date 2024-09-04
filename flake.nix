@@ -41,7 +41,7 @@
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
 						home-manager.backupFileExtension = "backup";
-						home-manager.users.simon = { imports = [ ./users/simon/home.nix ./hosts/voyager/users/simon/home.nix ]; };
+						home-manager.users.simon = { imports = [ ./users/simon ./hosts/voyager/users/simon/home.nix ]; };
 						home-manager.extraSpecialArgs = {
 							inherit inputs;
 						};
