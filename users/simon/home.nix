@@ -52,11 +52,11 @@
 
   programs.oh-my-posh = let
   configFETCH = import ./fetch-omp-config.nix;
-  configJSON = builtins.readFile ( builtins.fetchUrl (configFETCH));
+  configJSON = builtins.readFile ( builtins.fetchurl (configFETCH));
   in {
     enable = true;
     enableZshIntegration = true;
-    settings = builtins.fromJSON ("${configJSON}/config.json");
+    settings = builtins.fromJSON (configJSON);
   };
   
   programs.helix = {
