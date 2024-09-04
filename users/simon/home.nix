@@ -38,7 +38,7 @@
     shellAliases = {
       nup = "sudo nixos-rebuild switch --upgrade --recreate-lock-file --flake ${config.home.homeDirectory}/nixos-config";
       nre = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nixos-config";
-      testomp = "oh-my-posh print primary --config ${config.home.homeDirectory}/oh-my-posh-config/config.json";
+      testomp = "oh-my-posh print primary --config ${config.home.homeDirectory}/oh-my-posh-config/config.json --shell uni";
     };
     # oh-my-zsh = {
     #   enable = true;
