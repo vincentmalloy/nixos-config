@@ -17,10 +17,23 @@
     jq
   ];
 
+  home.sessionVariables = {
+    EDITOR = "hx";
+    EZA_COLORS = "da=38;5;240:sn=38;5;250:sb=38;5;240";
+  };
+
   programs.git = {
     enable = true;
     userName = "Simon Lundius";
     userEmail = "25029432+vincentmalloy@users.noreply.github.com";
+    aliases = {
+      hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short";
+      s = "status -sb";
+      last = "log -1 HEAD --stat";
+      c = "commit m";
+      search = "!git rev-list --all | xargs git grep -F";
+      dad = "!curl https://icanhazdadjoke.com/ && echo";
+    };
   };
 
   programs.eza = {
@@ -40,6 +53,17 @@
       nre = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nixos-config";
       testomp = "oh-my-posh print primary --config ${config.home.homeDirectory}/oh-my-posh-config/config.json --shell uni";
     };
+    initExtra = /* zsh */ ''
+      # git shorthand
+      # no args: git status, with args: git
+      g() {
+        if [[ $# -gt 0 ]]; then
+          git "$@"
+        else
+          git status -sb
+        fi
+      }
+    '';
     # oh-my-zsh = {
     #   enable = true;
     #   theme = "agnoster";
