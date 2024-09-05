@@ -1,8 +1,10 @@
 { inputs, lib, config, pkgs, ... }:
-
 {
 	home.packages = [
-		pkgs.lolcat
+		pkgs.hypridle
+		pkgs.hyprlock
+		pkgs.hyprcursor
+		pkgs.hyprpicker
 	];
 
 	wayland.windowManager.hyprland = {
