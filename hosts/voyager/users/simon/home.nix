@@ -5,6 +5,9 @@
 		pkgs.hyprlock
 		pkgs.hyprcursor
 		pkgs.hyprpicker
+		# pkgs.mako
+		# pkgs.waybar
+		# pkgs.nwg-look
 	];
 
 	wayland.windowManager.hyprland = {
@@ -72,6 +75,19 @@
 				"DP-2, ~/nixos-config/images/desktop/desktop_left.jpg"
 				"HDMI-A-1, ~/nixos-config/images/desktop/desktop_mid.jpg"
 			];
+		};
+	};
+
+	qt = {
+		enable = true;
+		platformTheme = "kde";
+	};
+
+	gtk = {
+		enable = true;
+		theme.name = "Breeze-Dark";
+		gtk3 = {
+			extraConfig.gtk-application-prefer-dark-theme = true;
 		};
 	};
 

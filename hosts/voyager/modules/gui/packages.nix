@@ -4,14 +4,20 @@
     # hyprpaper
     kitty
     # libnotify
-    # mako
-    # qt5.qtwayland
-    # qt6.qtwayland
+    mako
+    qt5.qtwayland
+    qt6.qtwayland
     # swayidle
     # swaylock-effects
     # wlogout
-    # wl-clipboard
+    nwg-look
+    wl-clipboard
     wofi
-    # waybar
+    waybar
+
+    kdePackages.breeze-gtk
+    kdePackages.breeze-icons
+    kdePackages.breeze.qt5
+    kdePackages.breeze
   ];
 }
