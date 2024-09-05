@@ -100,23 +100,10 @@
       background = "#000000";
     };
   };
-
+  
+  
   programs.firefox = {
     enable = true;
-
-    # profiles.default = {
-    #   extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
-    #       darkreader
-    #       i-dont-care-about-cookies
-    #       ublock-origin
-    #       youtube-shorts-block
-    #       keepassxc-browser
-    #   ];
-    #   extraConfig = ''
-    #     user_pref("extensions.autoDisableScopes", 0);
-    #     user_pref("extensions.enabledScopes", 15);
-    #   '';
-    # };
   };
 
   gtk = {
