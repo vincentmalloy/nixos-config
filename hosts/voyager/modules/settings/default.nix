@@ -1,7 +1,6 @@
-{ ... }: 
-{
-    imports = [
-        ./locale-settings.nix
-        ./nix-settings.nix
-    ];
+{...}: {
+  imports = [
+    ./locale-settings.nix
+    ./nix-settings.nix
+  ];
 }

@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   boot.plymouth.enable = true;
 
   # Bootloader.

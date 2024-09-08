@@ -1,4 +1,4 @@
-{ pkgs }:
+{pkgs}:
 pkgs.stdenv.mkDerivation rec {
   name = "sddm-astronaut-theme";
   version = "48ea0a79";
@@ -9,8 +9,12 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "kXovz813BS+Mtbk6+nNNdnluwp/7V2e3KJLuIfiWRD0=";
   };
   dontBuild = true;
-  installPhase = /* sh */ ''
-    mkdir -p $out/share/sddm/themes
-    cp -aR $src $out/share/sddm/themes/sddm-astronaut-theme
-  '';
+  installPhase =
+    /*
+    sh
+    */
+    ''
+      mkdir -p $out/share/sddm/themes
+      cp -aR $src $out/share/sddm/themes/sddm-astronaut-theme
+    '';
 }

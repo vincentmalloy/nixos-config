@@ -1,4 +1,4 @@
-{ pkgs }:
+{pkgs}:
 # let
 #   image = ../../../../../images/desktop/desktop_left.jpg;
 # in
@@ -25,8 +25,12 @@ pkgs.stdenv.mkDerivation rec {
     chmod +w $buildDir
     cp $config "$buildDir/theme.conf.user"
   '';
-  installPhase = /* sh */ ''
-    mkdir -p $out/share/sddm/themes
-    cp -aR $buildDir $out/share/sddm/themes/tokyo-night-sddm
-  '';
+  installPhase =
+    /*
+    sh
+    */
+    ''
+      mkdir -p $out/share/sddm/themes
+      cp -aR $buildDir $out/share/sddm/themes/tokyo-night-sddm
+    '';
 }

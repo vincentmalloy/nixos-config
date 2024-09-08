@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # systemwide default packages
   environment.systemPackages = with pkgs; [
     vim

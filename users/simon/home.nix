@@ -4,9 +4,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
-
+}: {
   home = {
     username = lib.mkDefault "simon";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
@@ -15,6 +13,7 @@
   home.packages = with pkgs; [
     helix
     jq
+    gh
     librespot
   ];
 
@@ -66,17 +65,21 @@
       testomp = "oh-my-posh print primary --config ${config.home.homeDirectory}/oh-my-posh-config/config.json --shell uni";
       gg = "git add .;git commit -m \"update\";git push";
     };
-    initExtra = /* zsh */ ''
-      # git shorthand
-      # no args: git status, with args: git
-      g() {
-        if [[ $# -gt 0 ]]; then
-          git "$@"
-        else
-          git status -sb
-        fi
-      }
-    '';
+    initExtra =
+      /*
+      zsh
+      */
+      ''
+        # git shorthand
+        # no args: git status, with args: git
+        g() {
+          if [[ $# -gt 0 ]]; then
+            git "$@"
+          else
+            git status -sb
+          fi
+        }
+      '';
     # oh-my-zsh = {
     #   enable = true;
     #   theme = "agnoster";
@@ -89,14 +92,14 @@
   };
 
   programs.oh-my-posh = let
-  configFETCH = import ./fetch-omp-config.nix;
-  configJSON = builtins.readFile ( builtins.fetchurl (configFETCH));
+    configFETCH = import ./fetch-omp-config.nix;
+    configJSON = builtins.readFile (builtins.fetchurl configFETCH);
   in {
     enable = true;
     enableZshIntegration = true;
-    settings = builtins.fromJSON (configJSON);
+    settings = builtins.fromJSON configJSON;
   };
-  
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -106,7 +109,7 @@
         true-color = true;
         bufferline = "multiple";
         cursorline = true;
-        rulers = [ 120 ];
+        rulers = [120];
         cursor-shape = {
           insert = "bar";
           normal = "block";
@@ -120,7 +123,7 @@
     themes = {
       voyager = {
         inherits = "molokai";
-        "ui.background" = { };
+        "ui.background" = {};
       };
     };
   };
@@ -137,8 +140,7 @@
       background = "#000000";
     };
   };
-  
-  
+
   programs.firefox = {
     enable = true;
   };
@@ -147,15 +149,13 @@
     enable = true;
     gtk3.extraConfig = {
       settings = ''
-        	gtk-application-prefer-dark-theme = 1;
+        gtk-application-prefer-dark-theme = 1;
       '';
     };
     gtk4.extraConfig = {
       settings = ''
-        	gtk-application-prefer-dark-theme = 1;
+        gtk-application-prefer-dark-theme = 1;
       '';
     };
-
   };
-
 }

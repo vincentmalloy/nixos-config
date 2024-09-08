@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./displaymanager.nix
     ./compositor.nix
