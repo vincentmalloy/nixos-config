@@ -45,14 +45,11 @@
       voyager = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./common
           disko.nixosModules.default
           (import ./hosts/voyager/disko-config.nix {device = "/dev/nvme0n1";})
           home-manager.nixosModules.home-manager
           ./common
           ./hosts/voyager
-          # ./hosts/voyager/home-manager-config.nix
-          # ./hosts/voyager/configuration.nix
         ];
         specialArgs = {
           inherit inputs;

@@ -7,7 +7,7 @@
   pkgs,
   ...
 }: {
-  config.username = "simon";
+  # config.username = "simon";
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -16,7 +16,8 @@
     ./modules/system
     ./modules/settings
     ./modules/software
-    ./users/simon/nix-user.nix
+    ./modules/user
+    # ./users/simon/nix-user.nix
   ];
 
   # This value determines the NixOS release from which the default
