@@ -5,7 +5,7 @@ hash=$(nix-prefetch-url "$url")
 # url=$(cat ./tmp-omp-json | jq .url)
 # rev=$(cat ./tmp-omp-json | jq .rev)
 # sha256=$(cat ./tmp-omp-json | jq .sha256)
-cat <<eos > users/simon/fetch-omp-config.nix
+cat <<eos > users/default/fetch-omp-config.nix
 {
   url = "$url";
   sha256 = "$hash";
