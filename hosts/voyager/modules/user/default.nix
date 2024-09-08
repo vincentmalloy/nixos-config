@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   users.users.${config.username} = {
     isNormalUser = true;
     description = "${config.fullName}";
