@@ -43,29 +43,20 @@
     nixosConfigurations = {
       # voyager - home desktop
       voyager = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-        };
         system = "x86_64-linux";
-        # username = "simon";
-        # hostname = "voyager";
         modules = [
+          ./common
           disko.nixosModules.default
           (import ./hosts/voyager/disko-config.nix {device = "/dev/nvme0n1";})
           home-manager.nixosModules.home-manager
-          (import ./hosts/voyager/home-manager-config.nix {})
-          # {
-          #   home-manager.useGlobalPkgs = true;
-          #   home-manager.useUserPackages = true;
-          #   home-manager.backupFileExtension = "backup";
-          #   home-manager.users.simon = {imports = [./users/simon ./hosts/voyager/users/simon/home.nix];};
-          #   home-manager.extraSpecialArgs = {
-          #     inherit inputs;
-          #   };
-          # }
           ./common
-          ./hosts/voyager/configuration.nix
+          ./hosts/voyager
+          # ./hosts/voyager/home-manager-config.nix
+          # ./hosts/voyager/configuration.nix
         ];
+        specialArgs = {
+          inherit inputs;
+        };
       };
     };
 

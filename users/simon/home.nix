@@ -6,7 +6,6 @@
   ...
 }: {
   home = {
-    username = lib.mkDefault "simon";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
   };
 
