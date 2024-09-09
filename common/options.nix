@@ -1,6 +1,5 @@
 {lib, ...}: {
   options = with lib; {
-    # with lib;
     username = mkOption {
       description = "default system username";
       type = with types; uniq str;
@@ -9,5 +8,14 @@
       description = "default user full name";
       type = with types; uniq str;
     };
-  };
+    githubUser = mkOption {
+      description = "GitHub username";
+      type = with types; uniq str;
+    };
+    githubId = mkOption {
+      description = "GitHub user-ID";
+      type = with types; uniq str;
+    };
+    };
+    
 }

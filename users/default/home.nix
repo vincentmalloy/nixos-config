@@ -34,8 +34,8 @@
 
   programs.git = {
     enable = true;
-    userName = "Simon Lundius";
-    userEmail = "25029432+vincentmalloy@users.noreply.github.com";
+    userName = "${config.fullName}";
+    userEmail = "${config.githubId}+${config.githubUser}@users.noreply.github.com";
     aliases = {
       hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short";
       s = "status -sb";
