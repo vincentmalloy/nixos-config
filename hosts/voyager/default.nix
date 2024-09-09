@@ -5,7 +5,8 @@
     githubUser = "vincentmalloy";
     githubId = "25029432";
     # colorscheme = "monokai";
-    colorscheme = "classic-dark";
+    # colorscheme = "classic-dark";
+    colorscheme = "gruvbox-dark-hard";
   };
 
   # This value determines the NixOS release from which the default
