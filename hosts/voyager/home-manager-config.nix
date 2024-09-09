@@ -2,18 +2,21 @@
   inputs,
   config,
   ...
-}: {
-  home-manager.extraSpecialArgs = {inherit inputs;};
+}: let
+  settings = config.settings;
+in {
+  home-manager.extraSpecialArgs = {inherit inputs settings;};
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
-  home-manager.users.${config.username} = {
+  home-manager.users.${settings.username} = {
     imports = [
       ../../users/default
       ./users/default/home.nix
     ];
     home = {
-      username = config.username;
+      username = settings.username;
+      stateVersion = config.system.stateVersion;
     };
   };
 }

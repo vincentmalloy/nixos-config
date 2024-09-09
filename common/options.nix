@@ -1,5 +1,5 @@
 {lib, ...}: {
-  options = with lib; {
+  options.settings = with lib; {
     username = mkOption {
       description = "default system username";
       type = with types; uniq str;
@@ -16,6 +16,5 @@
       description = "GitHub user-ID";
       type = with types; uniq str;
     };
-    };
-    
+  };
 }

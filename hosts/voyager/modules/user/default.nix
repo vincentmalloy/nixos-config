@@ -3,9 +3,9 @@
   config,
   ...
 }: {
-  users.users.${config.username} = {
+  users.users.${config.settings.username} = {
     isNormalUser = true;
-    description = "${config.fullName}";
+    description = "${config.settings.fullName}";
     initialPassword = "1";
     extraGroups = [
       "networkmanager"
@@ -16,7 +16,6 @@
     packages = with pkgs; [
       nextcloud-client
       keepassxc
-      neovim
     ];
   };
 }

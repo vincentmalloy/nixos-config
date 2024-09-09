@@ -95,6 +95,4 @@
       extraConfig.gtk-application-prefer-dark-theme = true;
     };
   };
-
-  home.stateVersion = lib.mkDefault "24.05";
 }
