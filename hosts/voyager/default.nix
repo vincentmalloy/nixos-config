@@ -4,6 +4,8 @@
     fullName = "Simon Lundius";
     githubUser = "vincentmalloy";
     githubId = "25029432";
+    # colorscheme = "monokai";
+    colorscheme = "classic-dark";
   };
 
   # This value determines the NixOS release from which the default

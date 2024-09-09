@@ -16,6 +16,10 @@
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
@@ -42,6 +46,7 @@
   in {
     nixosConfigurations = {
       # voyager - home desktop
+      # see settings in hosts/voyager/default.nix
       voyager = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

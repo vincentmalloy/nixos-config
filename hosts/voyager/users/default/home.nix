@@ -24,7 +24,7 @@
       # };
       "$mod" = "SUPER";
       bind = [
-        "$mod, Return, exec, kitty"
+        "$mod, Return, exec, alacritty"
         "$mod, R, exec, wofi --show drun"
         "$mod, M, exit"
         "$mod, Q, killactive"

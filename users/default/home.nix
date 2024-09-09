@@ -5,7 +5,9 @@
   inputs,
   settings,
   ...
-}: {
+}: let
+  nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs;};
+in {
   home = {
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
   };
@@ -21,6 +23,8 @@
     EDITOR = "hx";
     EZA_COLORS = "da=38;5;240:sn=38;5;250:sb=38;5;240";
   };
+
+  colorScheme = inputs.nix-colors.colorSchemes."${settings.colorscheme}";
 
   # authentication:
   # librespot -c ~/.cache/spotify-player -b 320
@@ -47,6 +51,38 @@
     };
   };
 
+  programs.nixvim = let
+    nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs;};
+  in {
+    enable = true;
+    globals.mapleader = " ";
+    viAlias = true;
+    vimAlias = true;
+    colorscheme = "nix-${config.colorScheme.slug}";
+    plugins = {
+      lualine = {
+        enable = true;
+      };
+      telescope = {
+        enable = true;
+      };
+      neo-tree = {
+        enable = true;
+      };
+    };
+    extraPlugins = [
+      (nix-colors-lib.vimThemeFromScheme {scheme = config.colorScheme;})
+    ];
+    keymaps = [
+      {
+        mode = ["n"];
+        key = "<leader>e";
+        action = "<cmd>Neotree toggle<cr>";
+        options = {desc = "Open/Close Neotree";};
+      }
+    ];
+  };
+
   programs.eza = {
     enable = true;
     icons = true;
@@ -60,7 +96,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      nup = "sudo nixos-rebuild switch --upgrade --recreate-lock-file --flake ${config.home.homeDirectory}/nixos-config";
+      nup = "pushd ${config.home.homeDirectory}/nixos-config;./update.zsh;nix fmt;popd;sudo nixos-rebuild switch --upgrade --recreate-lock-file --flake ${config.home.homeDirectory}/nixos-config";
       nre = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nixos-config";
       testomp = "oh-my-posh print primary --config ${config.home.homeDirectory}/oh-my-posh-config/config.json --shell uni";
       gg = "git add .;git commit -m \"update\";git push";
@@ -128,6 +164,46 @@
     };
   };
 
+  programs.alacritty.enable = true;
+  programs.alacritty.settings = {
+    font = {
+      normal = {
+        family = "CommitMono Nerd Font";
+        style = "Regular";
+      };
+    };
+    colors = with config.colorScheme.palette; {
+      bright = {
+        black = "0x${base00}";
+        blue = "0x${base0D}";
+        cyan = "0x${base0C}";
+        green = "0x${base0B}";
+        magenta = "0x${base0E}";
+        red = "0x${base08}";
+        white = "0x${base06}";
+        yellow = "0x${base09}";
+      };
+      cursor = {
+        cursor = "0x${base06}";
+        text = "0x${base06}";
+      };
+      normal = {
+        black = "0x${base00}";
+        blue = "0x${base0D}";
+        cyan = "0x${base0C}";
+        green = "0x${base0B}";
+        magenta = "0x${base0E}";
+        red = "0x${base08}";
+        white = "0x${base06}";
+        yellow = "0x${base0A}";
+      };
+      primary = {
+        background = "0x${base00}";
+        foreground = "0x${base06}";
+      };
+    };
+  };
+
   programs.kitty = {
     enable = true;
     font = {
@@ -137,7 +213,9 @@
     theme = "Monokai Soda";
     settings = {
       background_opacity = "0.5";
-      background = "#000000";
+      foreground = "#${config.colorScheme.palette.base05}";
+      background = "#${config.colorScheme.palette.base00}";
+      # background = "#000000";
     };
   };
 

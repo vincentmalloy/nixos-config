@@ -16,5 +16,9 @@
       description = "GitHub user-ID";
       type = with types; uniq str;
     };
+    colorscheme = mkOption {
+      description = "colorscheme for nix-colors";
+      type = with types; uniq str;
+    };
   };
 }
