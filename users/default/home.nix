@@ -56,6 +56,7 @@ in {
   in {
     enable = true;
     globals.mapleader = " ";
+    globals.transparent_enabled = true;
     viAlias = true;
     vimAlias = true;
     colorscheme = "nix-${config.colorScheme.slug}";
@@ -70,7 +71,8 @@ in {
         enable = true;
       };
     };
-    extraPlugins = [
+    extraPlugins = with pkgs.vimPlugins; [
+      transparent-nvim
       (nix-colors-lib.vimThemeFromScheme {scheme = config.colorScheme;})
     ];
     keymaps = [
@@ -166,6 +168,9 @@ in {
 
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
+    window = {
+      opacity = 0.5;
+    };
     font = {
       normal = {
         family = "CommitMono Nerd Font";
