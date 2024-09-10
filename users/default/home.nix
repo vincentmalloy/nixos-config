@@ -13,8 +13,11 @@ in {
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
   };
 
+  imports = [
+    ./modules/nixvim
+  ];
+
   home.packages = with pkgs; [
-    helix
     jq
     gh
     librespot
@@ -52,39 +55,6 @@ in {
     };
   };
 
-  programs.nixvim = let
-    nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs;};
-  in {
-    enable = true;
-    globals.mapleader = " ";
-    globals.transparent_enabled = true;
-    viAlias = true;
-    vimAlias = true;
-    colorscheme = "nix-${config.colorScheme.slug}";
-    plugins = {
-      lualine = {
-        enable = true;
-      };
-      telescope = {
-        enable = true;
-      };
-      neo-tree = {
-        enable = true;
-      };
-    };
-    extraPlugins = with pkgs.vimPlugins; [
-      transparent-nvim
-      (nix-colors-lib.vimThemeFromScheme {scheme = config.colorScheme;})
-    ];
-    keymaps = [
-      {
-        mode = ["n"];
-        key = "<leader>e";
-        action = "<cmd>Neotree toggle<cr>";
-        options = {desc = "Open/Close Neotree";};
-      }
-    ];
-  };
 
   programs.eza = {
     enable = true;
@@ -169,63 +139,6 @@ in {
       };
     };
   };
-
-  # programs.alacritty.enable = true;
-  # programs.alacritty.settings = {
-  #   window = {
-  #     opacity = 0.8;
-  #     padding = {
-  #       x = 6;
-  #       y = 6;
-  #     };
-  #   };
-  #   font = {
-  #     normal = {
-  #       family = "CommitMono Nerd Font";
-  #       style = "Regular";
-  #     };
-  #     builtin_box_drawing = true;
-  #     # size = 12;
-  #     # offset = {
-  #     #   x = 0;
-  #     #   y = 1;
-  #     # };
-  #     # glyph_offset = {
-  #     #   x = 0;
-  #     #   y = 1;
-  #     # };
-  #   };
-  #   colors = with config.colorScheme.palette; {
-  #     bright = {
-  #       black = "0x${base03}";
-  #       blue = "0x${base0D}";
-  #       cyan = "0x${base0C}";
-  #       green = "0x${base0B}";
-  #       magenta = "0x${base0E}";
-  #       red = "0x${base08}";
-  #       white = "0x${base07}";
-  #       yellow = "0x${base0A}";
-  #     };
-  #     cursor = {
-  #       cursor = "0x${base05}";
-  #       text = "0x${base05}";
-  #     };
-  #     normal = {
-  #       black = "0x${base01}";
-  #       blue = "0x${base0D}";
-  #       cyan = "0x${base0C}";
-  #       green = "0x${base0B}";
-  #       magenta = "0x${base0E}";
-  #       red = "0x${base08}";
-  #       white = "0x${base05}";
-  #       yellow = "0x${base0A}";
-  #     };
-  #     primary = {
-  #       background = "0x${base00}";
-  #       foreground = "0x${base05}";
-  #     };
-  #   };
-  # };
 
   programs.kitty = {
     enable = true;
