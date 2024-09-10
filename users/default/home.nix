@@ -4,6 +4,7 @@
   pkgs,
   inputs,
   settings,
+  nur,
   ...
 }: let
   nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs;};
@@ -166,48 +167,62 @@ in {
     };
   };
 
-  programs.alacritty.enable = true;
-  programs.alacritty.settings = {
-    window = {
-      opacity = 0.5;
-    };
-    font = {
-      normal = {
-        family = "CommitMono Nerd Font";
-        style = "Regular";
-      };
-    };
-    colors = with config.colorScheme.palette; {
-      bright = {
-        black = "0x${base00}";
-        blue = "0x${base0D}";
-        cyan = "0x${base0C}";
-        green = "0x${base0B}";
-        magenta = "0x${base0E}";
-        red = "0x${base08}";
-        white = "0x${base06}";
-        yellow = "0x${base09}";
-      };
-      cursor = {
-        cursor = "0x${base06}";
-        text = "0x${base06}";
-      };
-      normal = {
-        black = "0x${base00}";
-        blue = "0x${base0D}";
-        cyan = "0x${base0C}";
-        green = "0x${base0B}";
-        magenta = "0x${base0E}";
-        red = "0x${base08}";
-        white = "0x${base06}";
-        yellow = "0x${base0A}";
-      };
-      primary = {
-        background = "0x${base00}";
-        foreground = "0x${base06}";
-      };
-    };
-  };
+  # programs.alacritty.enable = true;
+  # programs.alacritty.settings = {
+  #   window = {
+  #     opacity = 0.8;
+  #     padding = {
+  #       x = 6;
+  #       y = 6;
+  #     };
+  #   };
+  #   font = {
+  #     normal = {
+  #       family = "CommitMono Nerd Font";
+  #       style = "Regular";
+  #     };
+  #     builtin_box_drawing = true;
+  #     # size = 12;
+  #     # offset = {
+  #     #   x = 0;
+  #     #   y = 1;
+  #     # };
+  #     # glyph_offset = {
+  #     #   x = 0;
+  #     #   y = 1;
+  #     # };
+  #   };
+  #   colors = with config.colorScheme.palette; {
+  #     bright = {
+  #       black = "0x${base03}";
+  #       blue = "0x${base0D}";
+  #       cyan = "0x${base0C}";
+  #       green = "0x${base0B}";
+  #       magenta = "0x${base0E}";
+  #       red = "0x${base08}";
+  #       white = "0x${base07}";
+  #       yellow = "0x${base0A}";
+  #     };
+  #     cursor = {
+  #       cursor = "0x${base05}";
+  #       text = "0x${base05}";
+  #     };
+  #     normal = {
+  #       black = "0x${base01}";
+  #       blue = "0x${base0D}";
+  #       cyan = "0x${base0C}";
+  #       green = "0x${base0B}";
+  #       magenta = "0x${base0E}";
+  #       red = "0x${base08}";
+  #       white = "0x${base05}";
+  #       yellow = "0x${base0A}";
+  #     };
+  #     primary = {
+  #       background = "0x${base00}";
+  #       foreground = "0x${base05}";
+  #     };
+  #   };
+  # };
 
   programs.kitty = {
     enable = true;
@@ -215,17 +230,50 @@ in {
       name = "CommitMono Nerd Font";
       size = 11;
     };
-    theme = "Monokai Soda";
-    settings = {
-      background_opacity = "0.5";
-      foreground = "#${config.colorScheme.palette.base05}";
-      background = "#${config.colorScheme.palette.base00}";
-      # background = "#000000";
+    # theme = "Monokai Soda";
+    settings = with config.colorScheme.palette; {
+      background_opacity = "0.8";
+      foreground = "#${base05}";
+      background = "#${base00}";
+      # black
+      color0 = "#${base01}";
+      color8 = "#${base03}";
+      # red
+      color1 = "#${base08}";
+      color9 = "#${base08}";
+      # green
+      color2 = "#${base0B}";
+      color10 = "#${base0B}";
+      # yellow
+      color3 = "#${base0A}";
+      color11 = "#${base0A}";
+      # blue
+      color4 = "#${base0D}";
+      color12 = "#${base0D}";
+      # magenta
+      color5 = "#${base0E}";
+      color13 = "#${base0E}";
+      # cyan
+      color6 = "#${base0C}";
+      color14 = "#${base0C}";
+      # white
+      color7 = "#${base05}";
+      color15 = "#${base07}";
     };
   };
 
   programs.firefox = {
     enable = true;
+    profiles = {
+      default = {
+        id = 0;
+        name = "default";
+        isDefault = true;
+        extensions = with nur.repos.rycee.firefox-addons; [
+          ublock-origin
+        ];
+      };
+    };
   };
 
   gtk = {

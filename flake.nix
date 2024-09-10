@@ -5,6 +5,9 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +38,7 @@
     nixpkgs,
     disko,
     home-manager,
+    nur,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -53,6 +57,7 @@
           disko.nixosModules.default
           (import ./hosts/voyager/disko-config.nix {device = "/dev/nvme0n1";})
           home-manager.nixosModules.home-manager
+          nur.nixosModules.nur
           ./common
           ./hosts/voyager
         ];

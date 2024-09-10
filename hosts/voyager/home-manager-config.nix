@@ -4,8 +4,9 @@
   ...
 }: let
   settings = config.settings;
+  nur = config.nur;
 in {
-  home-manager.extraSpecialArgs = {inherit inputs settings;};
+  home-manager.extraSpecialArgs = {inherit inputs settings nur;};
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";

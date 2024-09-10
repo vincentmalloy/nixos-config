@@ -24,7 +24,7 @@
       # };
       "$mod" = "SUPER";
       bind = [
-        "$mod, Return, exec, alacritty"
+        "$mod, Return, exec, kitty"
         "$mod, R, exec, wofi --show drun"
         "$mod, M, exit"
         "$mod, Q, killactive"
@@ -57,7 +57,7 @@
       ];
       decoration = {
         blur = {
-          size = 2;
+          size = 0;
         };
       };
       input = {
