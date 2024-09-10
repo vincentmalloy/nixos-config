@@ -9,7 +9,7 @@
 
   imports = [
     ./theme.nix
-    ./settings.nix
+    ./options.nix
     ./keymaps.nix
     ./plugins
   ];
