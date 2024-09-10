@@ -9,7 +9,6 @@
         inlayHints = true;
         servers = {
           jsonls = { enable = true; };
-          nixls = { enable = true; };
         };
       };
     };
