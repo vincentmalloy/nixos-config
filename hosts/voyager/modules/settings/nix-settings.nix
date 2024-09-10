@@ -23,6 +23,10 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+    # store optimization
+    optimise = {
+      automatic = true;
+    };
   };
 
   nixpkgs = {

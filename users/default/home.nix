@@ -140,7 +140,9 @@ in {
     settings = builtins.fromJSON configJSON;
   };
 
-  programs.helix = {
+  programs.helix = let
+  themeslug = builtins.replaceStrings ["-"] ["_"] config.colorScheme.slug;
+  in{
     enable = true;
     defaultEditor = true;
     settings = {
@@ -162,7 +164,7 @@ in {
     };
     themes = {
       voyager = {
-        inherits = "molokai";
+        inherits = "${themeslug}";
         "ui.background" = {};
       };
     };
@@ -261,6 +263,9 @@ in {
       color7 = "#${base05}";
       color15 = "#${base07}";
     };
+    extraConfig = ''
+      modify_font cell_height 110%
+    '';
   };
 
   programs.firefox = {
