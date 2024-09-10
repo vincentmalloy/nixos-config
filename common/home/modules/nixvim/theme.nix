@@ -1,9 +1,5 @@
-{
-  inputs,
-  pkgs,
-  config,
-  ...
-}: let
+{ inputs, pkgs, config, ...}:
+let
   nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs;};
 in {
   programs.nixvim = {

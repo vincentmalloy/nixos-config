@@ -6,16 +6,15 @@
   settings,
   nur,
   ...
-}: let
-  nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs;};
-in {
+}:
+{
   home = {
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
   };
 
-  imports = [
-    ./modules/nixvim
-  ];
+  # imports = [
+  #   ./modules/nixvim
+  # ];
 
   home.packages = with pkgs; [
     jq

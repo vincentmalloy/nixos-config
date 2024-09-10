@@ -36,9 +36,6 @@
   outputs = {
     self,
     nixpkgs,
-    disko,
-    home-manager,
-    nur,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -54,11 +51,7 @@
       voyager = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          disko.nixosModules.default
-          (import ./hosts/voyager/disko-config.nix {device = "/dev/nvme0n1";})
-          home-manager.nixosModules.home-manager
-          nur.nixosModules.nur
-          ./common
+          ./common/nix
           ./hosts/voyager
         ];
         specialArgs = {
