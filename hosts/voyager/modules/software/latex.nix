@@ -1,0 +1,6 @@
+{ pkgs, ... }:
+{
+  texliveBasic = {
+    enable = true;
+  };
+}

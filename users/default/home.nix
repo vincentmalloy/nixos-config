@@ -72,6 +72,7 @@
       testomp = "oh-my-posh print primary --config ${config.home.homeDirectory}/oh-my-posh-config/config.json --shell uni";
       gg = "git add .;git commit -m \"update\";git push";
       c = "clear";
+      enix = "nvim ${config.home.homeDirectory}/nixos-config";
     };
     initExtra =
       /*
