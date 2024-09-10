@@ -6,5 +6,6 @@
     ./telescope.nix
     ./treesitter.nix
     ./which-key.nix
+    ./autopairs.nix
   ];
 }
