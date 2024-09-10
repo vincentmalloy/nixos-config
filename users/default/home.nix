@@ -55,7 +55,6 @@ in {
     };
   };
 
-
   programs.eza = {
     enable = true;
     icons = true;
@@ -111,8 +110,8 @@ in {
   };
 
   programs.helix = let
-  themeslug = builtins.replaceStrings ["-"] ["_"] config.colorScheme.slug;
-  in{
+    themeslug = builtins.replaceStrings ["-"] ["_"] config.colorScheme.slug;
+  in {
     enable = true;
     defaultEditor = true;
     settings = {
