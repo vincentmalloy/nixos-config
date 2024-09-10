@@ -4,6 +4,7 @@
     ./lualine.nix
     ./lsp.nix
     ./telescope.nix
+    ./treesitter.nix
     ./which-key.nix
   ];
 }
