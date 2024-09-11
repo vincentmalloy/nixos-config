@@ -24,6 +24,14 @@
       sansSerif = config.stylix.fonts.monospace;
       emoji = config.stylix.fonts.monospace;
     };
+    targets = {
+      nixvim = {
+        transparentBackground = {
+          main = true;
+          signColumn = false;
+        };
+      };
+    };
     # stylix needs an image to be set, we generate one here
     image = config.lib.stylix.pixel "base01";
   };
