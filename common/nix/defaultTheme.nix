@@ -9,7 +9,8 @@
     polarity = "dark";
     opacity = {
       terminal = 0.8;
-      applications = 0.8;
+      applications = 1.0;
+      desktop = 1.0;
     };
     fonts = {
       sizes = {
