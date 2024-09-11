@@ -1,14 +1,4 @@
 { inputs, ...}: {
-  config.settings = {
-    username = "simon";
-    fullName = "Simon Lundius";
-    githubUser = "vincentmalloy";
-    githubId = "25029432";
-    # colorscheme = "monokai";
-    # colorscheme = "classic-dark";
-    colorscheme = "gruvbox-dark-hard";
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -24,6 +14,7 @@
     inputs.stylix.nixosModules.stylix
     inputs.nur.nixosModules.nur
     ./home-manager-config.nix
+    ./settings.nix
     ./configuration.nix
   ];
 }

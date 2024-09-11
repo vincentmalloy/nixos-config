@@ -1,0 +1,4 @@
+{ ... }:
+{
+  # overwrite global settings here
+}

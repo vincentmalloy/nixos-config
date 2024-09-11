@@ -22,7 +22,6 @@
     librespot
     texliveFull
     inotify-tools
-    nwg-look
   ];
 
   home.sessionVariables = {
@@ -35,7 +34,21 @@
   stylix = {
     enable = true;
     base16Scheme = config.colorScheme.palette;
-    image = "${config.home.homeDirectory}/nixos-config/images/desktop/desktop_left.jpg";
+    polarity = "dark";
+    opacity = {
+      terminal = 0.8;
+      applications = 0.8;
+    };
+    fonts = {
+      monospace = {
+        package = pkgs.commit-mono;
+        name = "CommitMono";
+      };
+      serif = config.stylix.fonts.monospace;
+      sansSerif = config.stylix.fonts.monospace;
+      emoji = config.stylix.fonts.monospace;
+    };
+    # image = "${config.home.homeDirectory}/nixos-config/images/desktop/desktop_left.jpg";
   };
   # authentication:
   # librespot -c ~/.cache/spotify-player -b 320

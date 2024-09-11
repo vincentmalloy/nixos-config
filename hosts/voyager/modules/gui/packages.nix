@@ -13,7 +13,8 @@
     wl-clipboard
     wofi
     waybar
-
+    xfce.thunar
+    geeqie
     # kdePackages.breeze-gtk
     # kdePackages.breeze-icons
     # kdePackages.breeze.qt5

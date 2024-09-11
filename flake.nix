@@ -46,6 +46,10 @@
     systems = [
       "x86_64-linux"
     ];
+    defaultModules = [
+      ./globalSettings.nix
+      ./common/nix
+    ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     nixosConfigurations = {
@@ -54,9 +58,8 @@
       voyager = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./common/nix
           ./hosts/voyager
-        ];
+        ] ++ defaultModules;
         specialArgs = {
           inherit inputs;
         };
