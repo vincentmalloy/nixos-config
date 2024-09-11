@@ -2,8 +2,6 @@
   environment.systemPackages = with pkgs; [
     # terminal
     kitty
-    # notifications
-    mako
     # clipboard
     wl-clipboard
     # app launcher

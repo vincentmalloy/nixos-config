@@ -8,6 +8,7 @@
     gnumake
     ripgrep
     wget
+    gtop
     nix-prefetch-scripts
   ];
 }

@@ -10,10 +10,15 @@
     pkgs.hyprlock
     pkgs.hyprcursor
     pkgs.hyprpicker
-    # pkgs.mako
     # pkgs.waybar
     # pkgs.nwg-look
   ];
+
+  services.mako = {
+    enable = true;
+    package = pkgs.mako;
+    defaultTimeout = 4000;
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;

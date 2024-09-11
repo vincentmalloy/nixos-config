@@ -40,6 +40,10 @@
     enable = true;
   };
 
+  programs.cava = {
+    enable = true;
+  };
+
   programs.git = {
     enable = true;
     userName = "${settings.fullName}";

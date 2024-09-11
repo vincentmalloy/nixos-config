@@ -1,4 +1,4 @@
 {
   url = "https://gist.githubusercontent.com/vincentmalloy/4b85151d28b3025451f5634b6081019d/raw/config.json";
-  sha256 = "082gxa1wc2d2xk5dwis79cnfhjd8m9px35w4rfv3zpql2jarvhkw";
+  sha256 = "1cxr40rv2d3nw4hbbm1kyxmp8k2nlgs2s1gjj2xxfk35gqclg1gc";
 }
