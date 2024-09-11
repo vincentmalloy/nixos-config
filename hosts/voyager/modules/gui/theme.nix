@@ -1,9 +1,5 @@
-{ config, ...}: 
-let
-# image = config.lib.stylix.pixel "base0A";
-in{
+{ ...}: 
+{
+  # for some reason stylix needs an image to be set
   stylix.image = ./image.jpg;
-  # stylix = {
-  #   inherit image;
-  # };
 }

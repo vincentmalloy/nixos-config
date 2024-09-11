@@ -1,9 +1,9 @@
 {pkgs, ...}: {
-  fonts.packages = with pkgs; [
-    font-awesome
-    open-sans
-    commit-mono
+  # fonts.packages = with pkgs; [
+  #   font-awesome
+  #   open-sans
+  #   commit-mono
 
-    (nerdfonts.override {fonts = ["CommitMono"];})
-  ];
+  #   (nerdfonts.override {fonts = ["CommitMono"];})
+  # ];
 }

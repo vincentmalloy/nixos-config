@@ -22,6 +22,7 @@
     librespot
     texliveFull
     inotify-tools
+    nwg-look
   ];
 
   home.sessionVariables = {
@@ -29,17 +30,18 @@
     EZA_COLORS = "da=38;5;240:sn=38;5;250:sb=38;5;240";
   };
 
-  colorScheme = inputs.nix-colors.colorSchemes."${settings.colorscheme}";
-
   stylix = {
     enable = true;
-    base16Scheme = config.colorScheme.palette;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${settings.colorscheme}.yaml";
     polarity = "dark";
     opacity = {
       terminal = 0.8;
       applications = 0.8;
     };
     fonts = {
+      sizes = {
+        terminal = 11;
+      };
       monospace = {
         package = pkgs.commit-mono;
         name = "CommitMono";
@@ -134,13 +136,10 @@
     settings = builtins.fromJSON configJSON;
   };
 
-  programs.helix = let
-    themeslug = builtins.replaceStrings ["-"] ["_"] config.colorScheme.slug;
-  in {
+  programs.helix = {
     enable = true;
     defaultEditor = true;
     settings = {
-      # theme = "voyager";
       editor = {
         true-color = true;
         bufferline = "multiple";
@@ -156,50 +155,10 @@
         };
       };
     };
-    # themes = {
-    #   voyager = {
-    #     inherits = "${themeslug}";
-    #     "ui.background" = {};
-    #   };
-    # };
   };
 
   programs.kitty = {
     enable = true;
-    # font = {
-    #   name = "CommitMono Nerd Font";
-    #   size = 11;
-    # };
-    # # theme = "Monokai Soda";
-    # settings = with config.colorScheme.palette; {
-    #   background_opacity = "0.8";
-    #   foreground = "#${base05}";
-    #   background = "#${base00}";
-    #   # black
-    #   color0 = "#${base01}";
-    #   color8 = "#${base03}";
-    #   # red
-    #   color1 = "#${base08}";
-    #   color9 = "#${base08}";
-    #   # green
-    #   color2 = "#${base0B}";
-    #   color10 = "#${base0B}";
-    #   # yellow
-    #   color3 = "#${base0A}";
-    #   color11 = "#${base0A}";
-    #   # blue
-    #   color4 = "#${base0D}";
-    #   color12 = "#${base0D}";
-    #   # magenta
-    #   color5 = "#${base0E}";
-    #   color13 = "#${base0E}";
-    #   # cyan
-    #   color6 = "#${base0C}";
-    #   color14 = "#${base0C}";
-    #   # white
-    #   color7 = "#${base05}";
-    #   color15 = "#${base07}";
-    # };
     extraConfig = ''
       modify_font cell_height 110%
     '';
@@ -219,23 +178,21 @@
     };
   };
 
-  # gtk = let nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs; }; in{
-  #   enable = true;
-  #   theme = {
-  #     package = nix-colors-lib.gtkThemeFromScheme {
-  #       scheme = config.colorScheme;
-  #     };
-  #     name = "generated-gtk-theme-${config.colorScheme.slug}";
-  #   };
-  #   gtk3.extraConfig = {
-  #     settings = ''
-  #       gtk-application-prefer-dark-theme = 1;
-  #     '';
-  #   };
-  #   gtk4.extraConfig = {
-  #     settings = ''
-  #       gtk-application-prefer-dark-theme = 1;
-  #     '';
-  #   };
-  # };
+  gtk = {
+    enable = true;
+    iconTheme = {
+      package = pkgs.gruvbox-dark-icons-gtk;
+      name = "gruvbox-dark-gtk";
+    };
+    gtk3.extraConfig = {
+      settings = ''
+        gtk-application-prefer-dark-theme = 1;
+      '';
+    };
+    gtk4.extraConfig = {
+      settings = ''
+        gtk-application-prefer-dark-theme = 1;
+      '';
+    };
+  };
 }
