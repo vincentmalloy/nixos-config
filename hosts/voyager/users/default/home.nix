@@ -83,16 +83,16 @@
     };
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "kde";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "kde";
+  # };
 
-  gtk = {
-    enable = true;
-    theme.name = "Breeze-Dark";
-    gtk3 = {
-      extraConfig.gtk-application-prefer-dark-theme = true;
-    };
-  };
+  # gtk = {
+  #   enable = true;
+  #   theme.name = "Breeze-Dark";
+  #   gtk3 = {
+  #     extraConfig.gtk-application-prefer-dark-theme = true;
+  #   };
+  # };
 }

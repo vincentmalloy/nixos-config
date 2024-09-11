@@ -20,6 +20,9 @@
     jq
     gh
     librespot
+    texliveFull
+    inotify-tools
+    nwg-look
   ];
 
   home.sessionVariables = {
@@ -29,6 +32,11 @@
 
   colorScheme = inputs.nix-colors.colorSchemes."${settings.colorscheme}";
 
+  stylix = {
+    enable = true;
+    base16Scheme = config.colorScheme.palette;
+    image = "${config.home.homeDirectory}/nixos-config/images/desktop/desktop_left.jpg";
+  };
   # authentication:
   # librespot -c ~/.cache/spotify-player -b 320
   # connect to device from player (e.g. on phone). credentials will be saved
@@ -38,6 +46,10 @@
     settings = {
       notify_timeout_in_secs = 2;
     };
+  };
+
+  programs.zathura = {
+    enable = true;
   };
 
   programs.git = {
@@ -115,7 +127,7 @@
     enable = true;
     defaultEditor = true;
     settings = {
-      theme = "voyager";
+      # theme = "voyager";
       editor = {
         true-color = true;
         bufferline = "multiple";
@@ -131,50 +143,50 @@
         };
       };
     };
-    themes = {
-      voyager = {
-        inherits = "${themeslug}";
-        "ui.background" = {};
-      };
-    };
+    # themes = {
+    #   voyager = {
+    #     inherits = "${themeslug}";
+    #     "ui.background" = {};
+    #   };
+    # };
   };
 
   programs.kitty = {
     enable = true;
-    font = {
-      name = "CommitMono Nerd Font";
-      size = 11;
-    };
-    # theme = "Monokai Soda";
-    settings = with config.colorScheme.palette; {
-      background_opacity = "0.8";
-      foreground = "#${base05}";
-      background = "#${base00}";
-      # black
-      color0 = "#${base01}";
-      color8 = "#${base03}";
-      # red
-      color1 = "#${base08}";
-      color9 = "#${base08}";
-      # green
-      color2 = "#${base0B}";
-      color10 = "#${base0B}";
-      # yellow
-      color3 = "#${base0A}";
-      color11 = "#${base0A}";
-      # blue
-      color4 = "#${base0D}";
-      color12 = "#${base0D}";
-      # magenta
-      color5 = "#${base0E}";
-      color13 = "#${base0E}";
-      # cyan
-      color6 = "#${base0C}";
-      color14 = "#${base0C}";
-      # white
-      color7 = "#${base05}";
-      color15 = "#${base07}";
-    };
+    # font = {
+    #   name = "CommitMono Nerd Font";
+    #   size = 11;
+    # };
+    # # theme = "Monokai Soda";
+    # settings = with config.colorScheme.palette; {
+    #   background_opacity = "0.8";
+    #   foreground = "#${base05}";
+    #   background = "#${base00}";
+    #   # black
+    #   color0 = "#${base01}";
+    #   color8 = "#${base03}";
+    #   # red
+    #   color1 = "#${base08}";
+    #   color9 = "#${base08}";
+    #   # green
+    #   color2 = "#${base0B}";
+    #   color10 = "#${base0B}";
+    #   # yellow
+    #   color3 = "#${base0A}";
+    #   color11 = "#${base0A}";
+    #   # blue
+    #   color4 = "#${base0D}";
+    #   color12 = "#${base0D}";
+    #   # magenta
+    #   color5 = "#${base0E}";
+    #   color13 = "#${base0E}";
+    #   # cyan
+    #   color6 = "#${base0C}";
+    #   color14 = "#${base0C}";
+    #   # white
+    #   color7 = "#${base05}";
+    #   color15 = "#${base07}";
+    # };
     extraConfig = ''
       modify_font cell_height 110%
     '';
@@ -194,17 +206,23 @@
     };
   };
 
-  gtk = {
-    enable = true;
-    gtk3.extraConfig = {
-      settings = ''
-        gtk-application-prefer-dark-theme = 1;
-      '';
-    };
-    gtk4.extraConfig = {
-      settings = ''
-        gtk-application-prefer-dark-theme = 1;
-      '';
-    };
-  };
+  # gtk = let nix-colors-lib = inputs.nix-colors.lib.contrib {inherit pkgs; }; in{
+  #   enable = true;
+  #   theme = {
+  #     package = nix-colors-lib.gtkThemeFromScheme {
+  #       scheme = config.colorScheme;
+  #     };
+  #     name = "generated-gtk-theme-${config.colorScheme.slug}";
+  #   };
+  #   gtk3.extraConfig = {
+  #     settings = ''
+  #       gtk-application-prefer-dark-theme = 1;
+  #     '';
+  #   };
+  #   gtk4.extraConfig = {
+  #     settings = ''
+  #       gtk-application-prefer-dark-theme = 1;
+  #     '';
+  #   };
+  # };
 }
