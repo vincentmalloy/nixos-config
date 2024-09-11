@@ -15,7 +15,6 @@ in {
       ../../users/default
       ./users/default/home.nix
       inputs.nixvim.homeManagerModules.nixvim
-      inputs.nix-colors.homeManagerModules.default
     ];
     home = {
       username = settings.username;

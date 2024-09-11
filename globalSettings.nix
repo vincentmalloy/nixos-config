@@ -1,5 +1,8 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   # global default settings, can be overriden per host in hosts/<hostname>/settings.nix
   config.settings = lib.mkDefault {
     username = "simon";

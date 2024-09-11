@@ -1,4 +1,3 @@
-{ ... }:
-{
+{...}: {
   # overwrite global settings here
 }

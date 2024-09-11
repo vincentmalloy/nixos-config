@@ -1,9 +1,9 @@
 {...}: {
   imports = [
-    ./displaymanager.nix
-    ./compositor.nix
-    ./packages.nix
-    ./theme.nix
-    ./xdg.nix
+    ./hyprland.nix
+    ./sddm.nix
+    # ./displaymanager.nix
+    # ./compositor.nix
+    # ./packages.nix
   ];
 }

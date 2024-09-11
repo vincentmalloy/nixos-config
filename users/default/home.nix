@@ -6,15 +6,10 @@
   settings,
   nur,
   ...
-}:
-{
+}: {
   home = {
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
   };
-
-  # imports = [
-  #   ./modules/nixvim
-  # ];
 
   home.packages = with pkgs; [
     jq
@@ -30,28 +25,6 @@
     EZA_COLORS = "da=38;5;240:sn=38;5;250:sb=38;5;240";
   };
 
-  stylix = {
-    enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/${settings.colorscheme}.yaml";
-    polarity = "dark";
-    opacity = {
-      terminal = 0.8;
-      applications = 0.8;
-    };
-    fonts = {
-      sizes = {
-        terminal = 11;
-      };
-      monospace = {
-        package = pkgs.commit-mono;
-        name = "CommitMono";
-      };
-      serif = config.stylix.fonts.monospace;
-      sansSerif = config.stylix.fonts.monospace;
-      emoji = config.stylix.fonts.monospace;
-    };
-    # image = "${config.home.homeDirectory}/nixos-config/images/desktop/desktop_left.jpg";
-  };
   # authentication:
   # librespot -c ~/.cache/spotify-player -b 320
   # connect to device from player (e.g. on phone). credentials will be saved
@@ -116,15 +89,6 @@
           fi
         }
       '';
-    # oh-my-zsh = {
-    #   enable = true;
-    #   theme = "agnoster";
-    #   plugins = [
-    #     "git"
-    #     "history"
-    #     "wd"
-    #   ];
-    # };
   };
 
   programs.oh-my-posh = let

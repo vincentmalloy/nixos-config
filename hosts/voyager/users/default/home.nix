@@ -19,9 +19,9 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     settings = {
-      # misc = {
-      # 	"disable_hyprland_logo" = true;
-      # };
+      misc = {
+      	"disable_hyprland_logo" = true;
+      };
       "$mod" = "SUPER";
       bind = [
         "$mod, Return, exec, kitty"

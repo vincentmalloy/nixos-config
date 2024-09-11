@@ -1,5 +1,8 @@
-{ pkgs, config, ... }
 {
+  pkgs,
+  config,
+  ...
+}: {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.settings.colorscheme}.yaml";
@@ -11,11 +14,8 @@
     fonts = {
       sizes = {
         terminal = 11;
+        applications = 11;
       };
-      packages = with pkgs; [
-        commit-mono
-        font-awesome
-      ];
       monospace = {
         package = pkgs.commit-mono;
         name = "CommitMono";
@@ -24,6 +24,7 @@
       sansSerif = config.stylix.fonts.monospace;
       emoji = config.stylix.fonts.monospace;
     };
-    # image = "${config.home.homeDirectory}/nixos-config/images/desktop/desktop_left.jpg";
+    # stylix needs an image to be set, we generate one here
+    image = config.lib.stylix.pixel "base01";
   };
 }
