@@ -33,39 +33,39 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    # supported systems
-    systems = [
-      "x86_64-linux"
-    ];
-    defaultModules = [
+  outputs = { ... } @ inputs: let
+    myLib = import ./lib/default.nix {inherit inputs;};
+    # defaultModules = [
+    #   ./globalSettings.nix
+    #   ./common/nix
+    # ];
+    # forAllSystems = nixpkgs.lib.genAttrs systems;
+  in 
+    with myLib; {
+      nixosConfigurations = {
+        voyager = mkSystem "x86_64-linux" ./hosts/voyager;# voyager - home desktop
+      # see settings in hosts/voyager/default.nix
+      # voyager = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   modules =
+      #     [
+      #       ./hosts/voyager
+      #     ]
+      #     ++ defaultModules;
+      #   specialArgs = {
+      #     inherit inputs;
+      #   };
+      # };
+      };
+
+    formatter = forAllSystems (nixpkgs.alejandra);
+
+    nixosModules.default = [
       ./globalSettings.nix
       ./common/nix
     ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    nixosConfigurations = {
-      # voyager - home desktop
-      # see settings in hosts/voyager/default.nix
-      voyager = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules =
-          [
-            ./hosts/voyager
-          ]
-          ++ defaultModules;
-        specialArgs = {
-          inherit inputs;
-        };
-      };
-    };
 
     # formatter
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    # formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
   };
 }
