@@ -9,9 +9,19 @@ in rec {
         inherit inputs outputs myLib;
       };
       modules = [
-        config
+        # import globally used custom options
+        outputs.settings
+
+        # import common nixos modules for all systems (can be enabled or not in hosts configuration.nix)
         outputs.nixosModules.default
-        outputs.nixosModules.settings
+
+        # import home-manager nixos module
+        inputs.home-manager.nixosModules.home-manager
+        # import common home-manager modules for all systems (can be enabled or not in hosts home.nix)
+        outputs.homeManagerModules.default
+
+        # import specific host configuration
+        config
       ];
     };
 }
