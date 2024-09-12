@@ -18,4 +18,8 @@
       keepassxc
     ];
   };
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = config.settings.username;
+  };
 }
