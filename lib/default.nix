@@ -1,5 +1,6 @@
-{ inputs }: let
+{inputs}: let
   myLib = (import ./default.nix) {inherit inputs;};
+
   outputs = inputs.self.outputs;
 in rec {
   mkSystem = system: config:
@@ -16,9 +17,9 @@ in rec {
         outputs.nixosModules.default
 
         # import home-manager nixos module
-        inputs.home-manager.nixosModules.home-manager
+        # inputs.home-manager.nixosModules.home-manager
         # import common home-manager modules for all systems (can be enabled or not in hosts home.nix)
-        outputs.homeManagerModules.default
+        # outputs.homeManagerModules.default
 
         # import specific host configuration
         config

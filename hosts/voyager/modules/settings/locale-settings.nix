@@ -16,7 +16,7 @@
   };
 
   console = {
-    keyMap = "de";
+    keyMap = "us";
     earlySetup = true;
   };
 }

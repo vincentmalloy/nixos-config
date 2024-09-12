@@ -8,13 +8,9 @@
   config.system.stateVersion = "24.05"; # Did you read the comment?
 
   imports = [
-    inputs.disko.nixosModules.default
-    (import ./disko-config.nix {device = "/dev/nvme0n1";})
-    inputs.home-manager.nixosModules.home-manager
-    inputs.stylix.nixosModules.stylix
-    inputs.nur.nixosModules.nur
-    ./home-manager-config.nix
+    # ./home-manager-config.nix
     ./settings.nix
     ./configuration.nix
+    ./home.nix
   ];
 }

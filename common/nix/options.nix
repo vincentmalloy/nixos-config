@@ -1,5 +1,9 @@
 {lib, ...}: {
   options.settings = with lib; {
+    diskoDevice = mkOption {
+      description = "disk device used in disko configuration";
+      type = with types; uniq str;
+    };
     username = mkOption {
       description = "default system username";
       type = with types; uniq str;

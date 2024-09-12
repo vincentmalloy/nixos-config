@@ -1,7 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-{config, ...}: {
+{config, inputs, ...}: {
   # nvidia setup
 
   # Enable OpenGL
@@ -44,6 +41,12 @@
   };
 
   imports = [
+    # external nixos modules from inputs
+    inputs.disko.nixosModules.default
+    (import ./disko.nix {device = config.settings.diskoDevice;})
+    inputs.home-manager.nixosModules.home-manager
+    inputs.stylix.nixosModules.stylix
+    inputs.nur.nixosModules.nur
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # include configuration modules
