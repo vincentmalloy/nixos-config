@@ -20,6 +20,15 @@
     defaultTimeout = 4000;
   };
 
+  programs.wofi = {
+    enable = true;
+    settings = {
+      allow_images = true;
+      allow_markup = true;
+      content_halign = "center";
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
