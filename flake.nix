@@ -40,7 +40,9 @@
         voyager = mkSystem "x86_64-linux" ./hosts/voyager; #======| VOYAGER - home desktop |=======#
       };
 
-      nixosModules.default = ./common/nix;
+      nixosModules.old = ./common/nix;
+      nixosModules.default = ./modules/nix;
+      homeManagerModules.default = ./modules/home;
       settings = ./globalSettings.nix;
 
       formatter = inputs.nixpkgs.lib.genAttrs ["x86_64-linux"] (system: inputs.nixpkgs.legacyPackages.${system}.alejandra);

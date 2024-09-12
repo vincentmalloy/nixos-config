@@ -1,5 +1,6 @@
 {
   inputs,
+  outputs,
   config,
   ...
 }: let
@@ -15,6 +16,7 @@ in {
       ../../users/default
       ./users/default/home.nix
       inputs.nixvim.homeManagerModules.nixvim
+      outputs.homeManagerModules.default
     ];
     home = {
       username = settings.username;

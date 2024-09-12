@@ -14,6 +14,7 @@ in rec {
         outputs.settings
 
         # import common nixos modules for all systems (can be enabled or not in hosts configuration.nix)
+        outputs.nixosModules.old
         outputs.nixosModules.default
 
         # import home-manager nixos module
