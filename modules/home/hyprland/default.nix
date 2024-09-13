@@ -1,4 +1,4 @@
-{lib, config, ...}:
+{lib, config, pkgs, inputs, ...}:
 with lib;
 let
   cfg = config.bundles.hyprland;

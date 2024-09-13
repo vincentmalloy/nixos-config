@@ -1,7 +1,6 @@
 { lib, ... }: {
   imports = [
-    #bundles
-    # ./vcs
+    ./hyprland
   ];
-  # bundles.vcs.enable = lib.mkDefault true;
+  bundles.hyprland.enable = lib.mkDefault true;
 }
