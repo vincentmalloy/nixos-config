@@ -1,4 +1,4 @@
-{lib, config, osConfig, pkgs, ...}:
+{lib, pkgs, config, ...}:
 with lib;
 let
   cfg = config.bundles.vcs.github;

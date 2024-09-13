@@ -20,5 +20,7 @@
       username = config.settings.username;
       stateVersion = config.system.stateVersion;
     };
+    # enable/disable specific bundles or modules here, e.g.:
+    # bundles.vcs.github.enable=false;
   };
 }
