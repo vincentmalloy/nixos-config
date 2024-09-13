@@ -1,5 +1,6 @@
-{...}: {
+{lib,...}: {
   imports = [
-    #nothing
+    ./vcs
   ];
+  bundles.vcs.enable = lib.mkDefault true;
 }

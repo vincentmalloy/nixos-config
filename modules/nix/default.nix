@@ -1,7 +1,7 @@
-{...}: {
+{ lib, ... }: {
   imports = [
-    #nothing
-    ./cowsay
+    #bundles
+    # ./vcs
   ];
-  something.cowsay.enable = false;
+  # bundles.vcs.enable = lib.mkDefault true;
 }

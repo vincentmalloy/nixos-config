@@ -12,7 +12,6 @@
 
   home.packages = with pkgs; [
     jq
-    gh
     librespot
     texliveFull
     inotify-tools
@@ -43,19 +42,6 @@
     enable = true;
   };
 
-  programs.git = {
-    enable = true;
-    userName = "${osConfig.settings.fullName}";
-    userEmail = "${osConfig.settings.githubId}+${osConfig.settings.githubUser}@users.noreply.github.com";
-    aliases = {
-      hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short";
-      s = "status -sb";
-      last = "log -1 HEAD --stat";
-      c = "commit m";
-      search = "!git rev-list --all | xargs git grep -F";
-      dad = "!curl https://icanhazdadjoke.com/ && echo";
-    };
-  };
 
   programs.eza = {
     enable = true;

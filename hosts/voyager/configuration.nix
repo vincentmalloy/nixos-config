@@ -60,4 +60,5 @@
     ./modules/software
     ./modules/user
   ];
+  something.cowsay.enable = false;
 }
