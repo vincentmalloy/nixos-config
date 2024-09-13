@@ -4,7 +4,7 @@
   myLib,
   config,
   ...
-}:{
+}: {
   home-manager.extraSpecialArgs = {inherit inputs outputs myLib;};
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
