@@ -60,5 +60,4 @@
     ./modules/software
     ./modules/user
   ];
-
 }

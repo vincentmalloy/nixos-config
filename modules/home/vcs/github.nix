@@ -1,6 +1,10 @@
-{lib, pkgs, config, ...}:
-with lib;
-let
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+with lib; let
   cfg = config.bundles.vcs.github;
 in {
   options.bundles.vcs.github = {

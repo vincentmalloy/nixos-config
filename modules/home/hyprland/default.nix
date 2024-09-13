@@ -1,6 +1,11 @@
-{lib, config, pkgs, inputs, ...}:
-with lib;
-let
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib; let
   cfg = config.bundles.hyprland;
 in {
   imports = [
@@ -51,7 +56,7 @@ in {
           "DP-2, preferred, auto-left, 1"
         ];
         windowrule = [
-            # "opacity 0.5, ^(kitty)$"
+          # "opacity 0.5, ^(kitty)$"
         ];
         decoration = {
           blur = {

@@ -1,9 +1,13 @@
-  {lib, config, inputs, pkgs, ...}:
-with lib;
-let
+{
+  lib,
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.bundles.hyprland;
 in {
-
   options.bundles.hyprland = {
     enable = mkEnableOption "hyprland nixos module";
   };

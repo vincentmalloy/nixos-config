@@ -1,6 +1,11 @@
-{lib, config, inputs, pkgs, ...}:
-with lib;
-let
+{
+  lib,
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.bundles.hyprland.hyprpaper;
 in {
   options.bundles.hyprland.hyprpaper = {
