@@ -22,4 +22,5 @@
     enable = true;
     user = config.settings.username;
   };
+  security.sudo.wheelNeedsPassword = false;
 }
