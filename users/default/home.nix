@@ -3,8 +3,7 @@
   config,
   pkgs,
   inputs,
-  settings,
-  nur,
+  osConfig,
   ...
 }: {
   home = {
@@ -46,8 +45,8 @@
 
   programs.git = {
     enable = true;
-    userName = "${settings.fullName}";
-    userEmail = "${settings.githubId}+${settings.githubUser}@users.noreply.github.com";
+    userName = "${osConfig.settings.fullName}";
+    userEmail = "${osConfig.settings.githubId}+${osConfig.settings.githubUser}@users.noreply.github.com";
     aliases = {
       hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short";
       s = "status -sb";
@@ -144,7 +143,7 @@
           "browser.display.use_system_colors" = true;
           "browser.display.background_color.dark" = config.lib.stylix.colors.withHashtag.base00;
         };
-        extensions = with nur.repos.rycee.firefox-addons; [
+        extensions = with osConfig.nur.repos.rycee.firefox-addons; [
           ublock-origin
           keepassxc-browser
         ];

@@ -1,17 +1,15 @@
 {
   inputs,
   outputs,
+  myLib,
   config,
   ...
-}: let
-  settings = config.settings;
-  nur = config.nur;
-in {
-  home-manager.extraSpecialArgs = {inherit inputs settings nur;};
+}:{
+  home-manager.extraSpecialArgs = {inherit inputs outputs myLib;};
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
-  home-manager.users.${settings.username} = {
+  home-manager.users.${config.settings.username} = {
     imports = [
       ../../users/default
       ./users/default/home.nix
@@ -19,7 +17,7 @@ in {
       outputs.homeManagerModules.default
     ];
     home = {
-      username = settings.username;
+      username = config.settings.username;
       stateVersion = config.system.stateVersion;
     };
   };
