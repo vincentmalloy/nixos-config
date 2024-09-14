@@ -29,7 +29,9 @@ in {
         };
         exec-once = [
           "waybar"
-          "[workspace special:quakemode]kitty"
+        ];
+        workspace = [
+          "special:quakemode, monitor:HDMI-A-1, gapsin 0, gapsout 0, on-created-empty:kitty"
         ];
         "$mod" = "SUPER";
         bind = [
@@ -63,7 +65,18 @@ in {
           "$mod, 0, workspace, 10"
           "$mod, ESCAPE, togglespecialworkspace, quakemode"
           "$mod SHIFT, ESCAPE, movetoworkspace, special:quakemode"
-        ];
+        ] ++ (
+          # workspaces
+          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+          builtins.concatLists (builtins.genList (i:
+              let ws = i + 1;
+              in [
+                "$mod, code:1${toString i}, workspace, ${toString ws}"
+                "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              ]
+            )
+          9)
+        );
         bindm = [
           # move/resize windows
           "$mod, mouse:272, movewindow"
