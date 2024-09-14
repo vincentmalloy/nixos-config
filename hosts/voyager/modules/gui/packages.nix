@@ -7,7 +7,7 @@
     # app launcher
     wofi
     # status bar
-    waybar
+    # waybar
     # file browser
     xfce.thunar
     # image viewer

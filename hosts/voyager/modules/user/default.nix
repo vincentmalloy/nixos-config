@@ -11,6 +11,7 @@
       "networkmanager"
       "wheel"
       "keys"
+      "input"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [

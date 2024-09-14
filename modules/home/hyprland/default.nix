@@ -10,6 +10,7 @@ with lib; let
 in {
   imports = [
     ./hyprpaper.nix
+    ./waybar.nix
   ];
 
   options.bundles.hyprland = {
@@ -18,6 +19,7 @@ in {
 
   config = mkIf cfg.enable {
     bundles.hyprland.hyprpaper.enable = mkDefault true;
+    bundles.hyprland.waybar.enable = mkDefault true;
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -25,6 +27,9 @@ in {
         misc = {
           "disable_hyprland_logo" = true;
         };
+        exec-once = [
+          "waybar"
+        ];
         "$mod" = "SUPER";
         bind = [
           "$mod, Return, exec, kitty"
