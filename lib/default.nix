@@ -13,7 +13,6 @@ in rec {
         # import globally used custom options
         outputs.settings
         # import common nixos modules for all systems (can be enabled or not in hosts configuration.nix)
-        outputs.nixosModules.old
         outputs.nixosModules.default
         # import specific host configuration
         config

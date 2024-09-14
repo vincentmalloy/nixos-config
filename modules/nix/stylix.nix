@@ -49,7 +49,8 @@ in {
       };
     };
     # stylix needs an image to be set, we generate one here
-    image = config.lib.stylix.pixel "base01";
+    # image = config.lib.stylix.pixel "base01";
+    image = ../../images/desktop/desktop_right.jpg;
   };
   };
 }
