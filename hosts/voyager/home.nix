@@ -13,7 +13,6 @@
     imports = [
       ../../users/default
       ./users/default/home.nix
-      inputs.nixvim.homeManagerModules.nixvim
       outputs.homeManagerModules.default
     ];
     home = {
