@@ -49,7 +49,6 @@
     inputs.disko.nixosModules.default
     (import ./disko.nix {device = config.settings.diskoDevice;})
     inputs.home-manager.nixosModules.home-manager
-    inputs.stylix.nixosModules.stylix
     inputs.nur.nixosModules.nur
     # Include the results of the hardware scan.
     ./hardware-configuration.nix

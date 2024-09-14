@@ -20,11 +20,11 @@ in {
   };
 
   config = mkIf cfg.enable {
-  programs.nixvim = {
-    enable = true;
-    globals.mapleader = " ";
-    viAlias = true;
-    vimAlias = true;
-  };
-
+    programs.nixvim = {
+      enable = true;
+      globals.mapleader = " ";
+      viAlias = true;
+      vimAlias = true;
+    };
+    };
 }
