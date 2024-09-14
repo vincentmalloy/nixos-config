@@ -6,8 +6,6 @@
     wl-clipboard
     # app launcher
     wofi
-    # status bar
-    # waybar
     # file browser
     xfce.thunar
     # image viewer

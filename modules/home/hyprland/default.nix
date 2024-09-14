@@ -29,11 +29,12 @@ in {
         };
         exec-once = [
           "waybar"
+          "[workspace special:quakemode]kitty"
         ];
         "$mod" = "SUPER";
         bind = [
           "$mod, Return, exec, kitty"
-          "$mod, R, exec, wofi --show drun"
+          "$mod, R, exec, pkill wofi || wofi --show drun"
           "$mod, M, exit"
           "$mod, Q, killactive"
           "$mod, F, exec, firefox"
@@ -49,6 +50,19 @@ in {
           "$mod ALT, right, movewindow, r"
           "$mod ALT, up, movewindow, u"
           "$mod ALT, down, movewindow, d"
+          # workspaces
+          "$mod, 1, workspace, 1"
+          "$mod, 2, workspace, 2"
+          "$mod, 3, workspace, 3"
+          "$mod, 4, workspace, 4"
+          "$mod, 5, workspace, 5"
+          "$mod, 6, workspace, 6"
+          "$mod, 7, workspace, 7"
+          "$mod, 8, workspace, 8"
+          "$mod, 9, workspace, 9"
+          "$mod, 0, workspace, 10"
+          "$mod, ESCAPE, togglespecialworkspace, quakemode"
+          "$mod SHIFT, ESCAPE, movetoworkspace, special:quakemode"
         ];
         bindm = [
           # move/resize windows
@@ -72,6 +86,18 @@ in {
           kb_layout = "us";
         };
       };
+      extraConfig = ''
+        # window resize
+        bind = $mod, S, submap, resize
+  
+        submap = resize
+        binde = , right, resizeactive, 10 0
+        binde = , left, resizeactive, -10 0
+        binde = , up, resizeactive, 0 -10
+        binde = , down, resizeactive, 0 10
+        bind = , escape, submap, reset
+        submap = reset
+      '';
     };
   };
 }

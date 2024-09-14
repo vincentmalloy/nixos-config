@@ -142,14 +142,10 @@
       name = "gruvbox-dark-gtk";
     };
     gtk3.extraConfig = {
-      settings = ''
-        gtk-application-prefer-dark-theme = 1;
-      '';
+      gtk-application-prefer-dark-theme = 1;
     };
     gtk4.extraConfig = {
-      settings = ''
-        gtk-application-prefer-dark-theme = 1;
-      '';
+      gtk-application-prefer-dark-theme = 1;
     };
   };
 }
