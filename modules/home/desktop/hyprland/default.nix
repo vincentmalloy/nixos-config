@@ -11,6 +11,7 @@ in {
   imports = [
     ./hyprpaper.nix
     ./quakemode.nix
+    ./variables.nix
   ];
 
   options.bundles.desktop.hyprland = {
@@ -29,14 +30,14 @@ in {
         exec-once = [
           "waybar"
         ];
-        "$mod" = "SUPER";
+        # "$mod" = "SUPER";
         bind =
           [
-            "$mod, Return, exec, kitty"
+            "$mod, Return, exec, $terminal"
             "$mod, R, exec, pkill wofi || wofi --show drun"
             "$mod, M, exit"
             "$mod, Q, killactive"
-            "$mod, F, exec, firefox"
+            "$mod, F, exec, $browser"
             "$mod, V, togglefloating"
             "$mod, P, fullscreen, 1"
             # move focus

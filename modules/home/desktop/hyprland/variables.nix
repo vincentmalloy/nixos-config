@@ -10,7 +10,7 @@ in {
     wayland.windowManager.hyprland = {
       settings = {
         "$mod" = "SUPER";
-        "$primaryMonitor" = "HDMI-A-1";
+          "$primaryMonitor" = "HDMI-A-1";
         "$terminal" = "kitty";
         "$browser" = "firefox";
       };
