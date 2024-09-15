@@ -25,7 +25,7 @@
       type = with types; uniq str;
     };
   };
-  
+
   imports = [
     ./hyprland
     ./stylix.nix

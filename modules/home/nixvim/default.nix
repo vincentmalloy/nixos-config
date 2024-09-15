@@ -8,7 +8,7 @@ with lib; let
   cfg = config.bundles.nixvim;
 in {
   imports = [
-      inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeManagerModules.nixvim
     ./theme.nix
     ./options.nix
     ./keymaps.nix
@@ -26,5 +26,5 @@ in {
       viAlias = true;
       vimAlias = true;
     };
-    };
+  };
 }

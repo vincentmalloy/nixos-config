@@ -19,8 +19,8 @@ in {
         animation = [
           "specialWorkspace, 1, 4, default, slidefadevert -100%"
         ];
-        "$mod" = "SUPER";
         bind = [
+          "$mod, ESCAPE, movefocus, monitor $primaryMonitor"
           "$mod, ESCAPE, togglespecialworkspace, quakemode"
           "$mod SHIFT, ESCAPE, movetoworkspace, special:quakemode"
         ];
