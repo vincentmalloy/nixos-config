@@ -6,20 +6,19 @@
   ...
 }:
 with lib; let
-  cfg = config.bundles.hyprland;
+  cfg = config.bundles.desktop.hyprland;
 in {
   imports = [
     ./hyprpaper.nix
-    ./waybar.nix
+    ./quakemode.nix
   ];
 
-  options.bundles.hyprland = {
+  options.bundles.desktop.hyprland = {
     enable = mkEnableOption "hyprland window manager and additional tools";
   };
 
   config = mkIf cfg.enable {
-    bundles.hyprland.hyprpaper.enable = mkDefault true;
-    bundles.hyprland.waybar.enable = mkDefault true;
+    bundles.desktop.hyprland.hyprpaper.enable = mkDefault true;
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -29,9 +28,6 @@ in {
         };
         exec-once = [
           "waybar"
-        ];
-        workspace = [
-          "special:quakemode, monitor:HDMI-A-1, gapsin 0, gapsout 0, on-created-empty:kitty"
         ];
         "$mod" = "SUPER";
         bind = [
@@ -63,8 +59,6 @@ in {
           "$mod, 8, workspace, 8"
           "$mod, 9, workspace, 9"
           "$mod, 0, workspace, 10"
-          "$mod, ESCAPE, togglespecialworkspace, quakemode"
-          "$mod SHIFT, ESCAPE, movetoworkspace, special:quakemode"
         ] ++ (
           # workspaces
           # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
@@ -86,9 +80,6 @@ in {
           "HDMI-A-1, preferred, 0x0, 1.5"
           "DP-1, preferred, auto-right, 1"
           "DP-2, preferred, auto-left, 1"
-        ];
-        windowrule = [
-          # "opacity 0.5, ^(kitty)$"
         ];
         decoration = {
           blur = {
