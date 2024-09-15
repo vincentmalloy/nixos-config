@@ -9,6 +9,7 @@ with lib; let
 in {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    ./autocomplete.nix
     ./theme.nix
     ./options.nix
     ./keymaps.nix
