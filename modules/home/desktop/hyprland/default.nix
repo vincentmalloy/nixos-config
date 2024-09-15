@@ -34,12 +34,12 @@ in {
         bind =
           [
             "$mod, Return, exec, $terminal"
-            "$mod, R, exec, pkill wofi || wofi --show drun"
+            "$mod, R, exec, pkill $launcher || $launcher --show drun"
             "$mod, M, exit"
             "$mod, Q, killactive"
-            "$mod, F, exec, $browser"
+            "$mod, B, exec, $browser"
             "$mod, V, togglefloating"
-            "$mod, P, fullscreen, 1"
+            "$mod, F, fullscreen, 1"
             # move focus
             "$mod, left, movefocus, l"
             "$mod, right, movefocus, r"
