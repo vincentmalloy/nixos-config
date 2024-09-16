@@ -34,7 +34,7 @@ in {
         };
         monospace = {
           # package = pkgs.commit-mono;
-          package = pkgs.nerdfonts.override { fonts = [ "CommitMono"]; };
+          package = pkgs.nerdfonts.override {fonts = ["CommitMono"];};
           name = "CommitMono Nerd Font";
         };
         serif = config.stylix.fonts.monospace;

@@ -11,5 +11,6 @@
     gtop
     nix-prefetch-scripts
     bc
+    aerc
   ];
 }
