@@ -13,7 +13,7 @@ in {
         "$primaryMonitor" = "HDMI-A-1";
         "$terminal" = "kitty";
         "$browser" = "firefox";
-          "$launcher" = "wofi";
+        "$launcher" = "wofi";
       };
     };
   };

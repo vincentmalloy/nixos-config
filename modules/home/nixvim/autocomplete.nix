@@ -3,17 +3,17 @@
     plugins = {
       luasnip.enable = true;
 
-    lspkind = {
-      enable = true;
+      lspkind = {
+        enable = true;
 
-      cmp = {
+        cmp = {
           enable = true;
         };
-    };
+      };
 
-    cmp = {
-      enable = true;
-    };
+      cmp = {
+        enable = true;
+      };
     };
   };
 }

@@ -28,11 +28,12 @@ in {
           "$mod, ESCAPE, togglespecialworkspace, quakemode"
           "$mod, ESCAPE, submap, quakemode"
           "$mod SHIFT, ESCAPE, movetoworkspace, special:quakemode"
-          ];
+        ];
       };
       extraConfig = ''
         submap = quakemode
         bind = $mod, F, fullscreen
+        bind = $mod, V, togglefloating
         bind = $mod, ESCAPE, togglespecialworkspace, quakemode
         bind = $mod, ESCAPE, submap, reset
         submap = reset

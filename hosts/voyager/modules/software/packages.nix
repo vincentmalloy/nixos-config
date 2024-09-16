@@ -10,5 +10,6 @@
     wget
     gtop
     nix-prefetch-scripts
+    bc
   ];
 }

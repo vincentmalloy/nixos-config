@@ -7,7 +7,7 @@
     # app launcher
     wofi
     # file browser
-    # xfce.thunar
+    xfce.thunar
     # image viewer
     geeqie
   ];

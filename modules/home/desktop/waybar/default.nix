@@ -70,16 +70,25 @@ in {
           // {
             output = "DP-2";
 
-            modules-left = [
-              "custom/hello-from-waybar"
+            modules-center = [
+              "custom/voyager"
             ];
 
-            "custom/hello-from-waybar" = {
-              format = "hello {}";
+            "custom/voyager" = {
+              format = "{}";
               max-length = 40;
-              interval = "once";
-              exec = pkgs.writeShellScript "hello-from-waybar" ''
-                echo "from within waybar"
+              interval = 60;
+              exec = pkgs.writeShellScript "distance-of-voyager" ''
+                #!/usr/bin/env bash
+
+                epoch_known="1433924220" # June 10, 2015, 10:17 UTC
+                dist_known="19569051779462.6" # distance in meters at epoch_known
+                speed_mps="16999.487261" # speed in meters per second
+                au="149597870691"
+                epoch_now=$(date +%s)
+                timediff=$(bc <<< "$epoch_now - $epoch_known")
+                distance=$(bc <<< "scale=5;($dist_known + ( $timediff * $speed_mps )) / $au")
+                echo "󰇧    $distance AU    "
               '';
             };
           };
