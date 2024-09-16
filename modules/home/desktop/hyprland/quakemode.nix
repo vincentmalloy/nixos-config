@@ -18,9 +18,9 @@ in {
         ];
         windowrulev2 = [
           "float, onworkspace:special:quakemode"
-          "monitor HDMI-A-1, onworkspace:special:quakemode"
+          "monitor $primaryMonitor, onworkspace:special:quakemode"
           "size 100% 50%, onworkspace:special:quakemode"
-          "center, onworkspace:special:quakemode"
+          "move 0 0, onworkspace:special:quakemode"
         ];
         animation = [
           "specialWorkspace, 1, 4, default, slidefadevert -100%"
@@ -35,10 +35,8 @@ in {
       extraConfig = ''
         submap = quakemode
         bind = $mod, F, fullscreen
-        bind = $mod, T, togglefloating
         bind = $mod, V, resizeactive, exact 100% 50%
-        bind = $mod, V, centerwindow
-        bind = $mod, V, movewindow, u
+        bind = $mod, V, moveactive, exact 0 0
         bind = $mod, ESCAPE, togglespecialworkspace, quakemode
         bind = $mod, ESCAPE, submap, reset
         submap = reset
