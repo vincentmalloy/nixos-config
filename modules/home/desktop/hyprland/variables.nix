@@ -14,6 +14,7 @@ in {
         "$terminal" = "kitty";
         "$browser" = "firefox";
         "$launcher" = "wofi";
+        "$fileManager" = "nautilus";
       };
     };
   };

@@ -35,6 +35,7 @@ in {
           [
             "$mod, Return, exec, $terminal"
             "$mod, R, exec, pkill $launcher || $launcher --show drun"
+            "$mod, E, exec, $fileManager"
             "$mod, M, exit"
             "$mod, Q, killactive"
             "$mod, B, exec, $browser"

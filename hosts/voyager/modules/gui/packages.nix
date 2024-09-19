@@ -7,8 +7,11 @@
     # app launcher
     wofi
     # file browser
-    xfce.thunar
+    # xfce.thunar
+    nautilus
+    gvfs
     # image viewer
     geeqie
   ];
+  services.gvfs.enable = true;
 }

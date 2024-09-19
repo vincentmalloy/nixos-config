@@ -4,6 +4,9 @@
       # show line numbers
       number = true;
 
+      # enter digraphs with {char1} <BS> {char2}
+      digraph = true;
+
       # tab width
       shiftwidth = 2;
       tabstop = 2;

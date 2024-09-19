@@ -12,5 +12,7 @@
     nix-prefetch-scripts
     bc
     aerc
+    blender
+    p7zip
   ];
 }

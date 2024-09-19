@@ -26,6 +26,9 @@ in {
       globals.mapleader = " ";
       viAlias = true;
       vimAlias = true;
+      extraConfigVim = ''
+        set exrc
+      '';
     };
   };
 }
