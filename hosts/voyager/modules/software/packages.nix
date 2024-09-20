@@ -14,7 +14,6 @@
     aerc
     blender
     p7zip
-    ckan
     openssl
   ];
 }
