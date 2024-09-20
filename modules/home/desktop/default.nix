@@ -11,6 +11,7 @@ in {
     ./hyprland
     ./waybar
     ./mako
+    ./wofi
   ];
 
   options.bundles.desktop = {
@@ -24,5 +25,6 @@ in {
     bundles.desktop.hyprland.enable = mkDefault true;
     bundles.desktop.waybar.enable = mkDefault true;
     bundles.desktop.mako.enable = mkDefault true;
+    bundles.desktop.wofi.enable = mkDefault true;
   };
 }

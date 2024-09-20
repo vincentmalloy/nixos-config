@@ -5,7 +5,7 @@
     # clipboard
     wl-clipboard
     # app launcher
-    wofi
+    # wofi
     # file browser
     # xfce.thunar
     nautilus

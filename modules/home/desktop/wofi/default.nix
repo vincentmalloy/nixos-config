@@ -1,4 +1,4 @@
- {
+{
   lib,
   config,
   ...
@@ -11,14 +11,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-programs.wofi = {
-    enable = true;
-    settings = {
-      allow_images = true;
-      allow_markup = true;
-      content_halign = "center";
+    programs.wofi = {
+      enable = true;
+      settings = {
+        allow_images = true;
+        allow_markup = true;
+        content_halign = "center";
+      };
     };
-  };
-
   };
 }

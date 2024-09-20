@@ -1,5 +1,6 @@
 {...}: {
   boot.plymouth.enable = true;
+  boot.supportedFilesystems = ["ntfs"];
 
   # Bootloader.
   boot.loader.grub.enable = true;
