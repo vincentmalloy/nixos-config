@@ -10,8 +10,8 @@ with lib; let
 in {
   imports = [
     ./hyprpaper.nix
-    ./quakemode.nix
-    ./variables.nix
+    ./hypridle.nix
+    ./includes
   ];
 
   options.bundles.desktop.hyprland = {
@@ -20,6 +20,7 @@ in {
 
   config = mkIf cfg.enable {
     bundles.desktop.hyprland.hyprpaper.enable = mkDefault true;
+    bundles.desktop.hyprland.hypridle.enable = mkDefault true;
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
