@@ -53,7 +53,11 @@
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
+    autocd = true;
     syntaxHighlighting.enable = true;
+    history = {
+      ignoreAllDups = true;
+    };
     shellAliases = {
       nup = "pushd ${config.home.homeDirectory}/nixos-config;./update.zsh;nix fmt;popd;sudo nixos-rebuild switch --upgrade --recreate-lock-file --flake ${config.home.homeDirectory}/nixos-config";
       nre = "pushd ${config.home.homeDirectory}/nixos-config;make;popd";
@@ -111,6 +115,8 @@
 
   programs.kitty = {
     enable = true;
+    # keybindings = {
+    # };
     extraConfig = ''
       modify_font cell_height 110%
     '';
