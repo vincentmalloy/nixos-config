@@ -12,7 +12,6 @@
   home-manager.users.${config.settings.username} = {
     imports = [
       ../../users/default
-      ./users/default/home.nix
       outputs.homeManagerModules.default
     ];
     home = {
