@@ -9,6 +9,7 @@ in {
   imports = [
     ./hyprland
     ./waybar
+    ./mako
   ];
 
   options.bundles.desktop = {
@@ -16,7 +17,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      libnotify
+    ];
     bundles.desktop.hyprland.enable = mkDefault true;
     bundles.desktop.waybar.enable = mkDefault true;
+    bundles.desktop.mako.enable = mkDefault true;
   };
 }

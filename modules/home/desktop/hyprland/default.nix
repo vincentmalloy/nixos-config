@@ -30,6 +30,7 @@ in {
         };
         exec-once = [
           "waybar"
+          "hypridle"
         ];
         # "$mod" = "SUPER";
         bind =
