@@ -7,5 +7,6 @@
     ./treesitter.nix
     ./which-key.nix
     ./autopairs.nix
+    ./web-devicons.nix
   ];
 }
