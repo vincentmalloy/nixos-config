@@ -8,7 +8,7 @@
         inlayHints = true;
         servers = {
           jsonls = {enable = true;}; # json
-          nil-ls = {enable = true;}; # nix
+          nil_ls = {enable = true;}; # nix
         };
       };
     };
