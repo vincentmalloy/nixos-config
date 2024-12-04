@@ -8,6 +8,9 @@
   ];
 
   config = {
+    environment.variables = {
+      WSL_WIN_HOME_PATH = "/mnt/c/Users/${config.settings.username}";
+    };
     wsl = {
       enable = true;
       wslConf.automount.root = "/mnt";
