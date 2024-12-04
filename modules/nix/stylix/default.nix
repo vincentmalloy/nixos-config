@@ -11,8 +11,8 @@
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/${config.settings.colorscheme}.yaml";
     polarity = "dark";
     # stylix needs an image to be set, we generate one here
-    image = config.lib.stylix.pixel "base01";
-    # image = ../../files/images/desktop/desktop_right.jpg;
+    # image = config.lib.stylix.pixel "base01";
+    image = ../../../images/desktop/desktop_right.jpg;
     # image = "${config.home-manager.users.${config.settings.username}.xdg.dataHome}/images/desktop/desktop_right.jpg";
   };
 }
