@@ -5,8 +5,8 @@
 }: {
   imports = [
     ./settings.nix
-  ./hardware-configuration.nix
-  ./home.nix
+    ./hardware-configuration.nix
+    ./home.nix
     ../../modules/nix
     ./modules/nix
     inputs.disko.nixosModules.default
@@ -14,7 +14,7 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-    system.stateVersion = "24.05";
+  system.stateVersion = "24.05";
   # nvidia setup
 
   # Enable OpenGL
@@ -59,5 +59,4 @@
 
   # make time compatible with Windows
   time.hardwareClockInLocalTime = true;
-
 }

@@ -1,6 +1,7 @@
 {
   config,
   osConfig,
+  pkgs,
   ...
 }: {
   programs.firefox = {
@@ -15,7 +16,7 @@
           "browser.display.use_system_colors" = true;
           "browser.display.background_color.dark" = config.lib.stylix.colors.withHashtag.base00;
         };
-        extensions = with osConfig.nur.repos.rycee.firefox-addons; [
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           keepassxc-browser
         ];

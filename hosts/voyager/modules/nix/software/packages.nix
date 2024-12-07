@@ -17,5 +17,7 @@
     openssl
     calcurse
     pass
+
+    freecad-wayland
   ];
 }

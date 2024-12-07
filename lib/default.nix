@@ -8,16 +8,18 @@ in {
     wsl ? false,
     modules ? [],
     args ? {},
-  } : let
+  }: let
     specialArgs = {inherit inputs;} // args;
     input-suffix =
       if wsl
       then "-wsl"
       else "";
-    additionalModules = modules ++ inputs.nixpkgs.lib.optionals wsl [
-      inputs.nixos-wsl.nixosModules.wsl
-      ({ ... }:{settings.isWSL = true;})
-    ];
+    additionalModules =
+      modules
+      ++ inputs.nixpkgs.lib.optionals wsl [
+        inputs.nixos-wsl.nixosModules.wsl
+        ({...}: {settings.isWSL = true;})
+      ];
   in
     inputs."nixpkgs${input-suffix}".lib.nixosSystem {
       inherit system;
@@ -25,7 +27,7 @@ in {
       modules =
         [
           ../hosts/${hostName}/configuration.nix
-          inputs.nur.nixosModules.nur
+          inputs.nur.modules.nixos.default
           inputs."stylix${input-suffix}".nixosModules.stylix
           inputs."home-manager${input-suffix}".nixosModules.home-manager
           ({...}: {networking.hostName = hostName;})

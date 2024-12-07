@@ -17,7 +17,7 @@ in {
       ./direnv
       ./eza
       ./programs
-	./helix
+      ./helix
     ]
     ++ (optionals enableGui [
       ./gui

@@ -303,5 +303,5 @@
     "foreground": "p:foreground",
     "template": "{{ if .Root }}<p:danger-foreground,p:danger-background> \udb84\ude38</><p:danger-background,background>\ue0b0</>\u276f{{ else }}<d>-\u276f</>{{ end }}"
   },
-  "console_title_template": "{{.UserName}} in {{ if eq .OS \"windows\"}}{{.PWD | replace \"~\" \"🏠\" }}{{ else }}{{ if .Env.WSL_WIN_HOME_PATH }}{{.PWD | replace .Env.WSL_WIN_HOME_PATH \"win-🏠\" | replace \"~\" \"nix-🏠\" }}{{ else }}{{.PWD | replace .Env.HOME \"🏠\" }}{{ end }}{{ end }} @ {{.HostName}}"
+  "console_title_template": "{{.UserName}} in {{ if eq .OS \"windows\"}}{{.PWD | replace \"~\" \"🏠\" }}{{ else }}{{ if .Env.WSL_WIN_HOME_PATH }}{{.PWD | replace .Env.WSL_WIN_HOME_PATH \"win-🏠\" | replace \"~\" \"nix-🏠\" }}{{ else }}{{.PWD | replace \"~\" \"🏠\" }}{{ end }}{{ end }} @ {{.HostName}}"
 }

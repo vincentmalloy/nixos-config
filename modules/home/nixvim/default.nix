@@ -6,9 +6,9 @@
   ...
 }: let
   nixvim-key =
-   if osConfig.settings.isWSL
-   then "nixvim-wsl"
-   else "nixvim";
+    if osConfig.settings.isWSL
+    then "nixvim-wsl"
+    else "nixvim";
 in {
   imports =
     [

@@ -32,6 +32,8 @@
         # "$mod" = "SUPER";
         bind =
           [
+            "$mod ALT, S, execr, bloodwestbackup"
+            "$mod ALT, L, execr, bloodwestrestore"
             "$mod, Return, exec, $terminal"
             "$mod, R, exec, pkill $launcher || $launcher --show drun"
             "$mod, E, exec, $fileManager"

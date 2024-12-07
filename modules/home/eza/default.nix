@@ -9,9 +9,10 @@
 
   programs.eza = {
     enable = true;
-    icons = if osConfig.settings.isWSL
-     then true
-     else "auto";
+    icons =
+      if osConfig.settings.isWSL
+      then true
+      else "auto";
     extraOptions = [
       "--group-directories-first"
     ];
