@@ -27,7 +27,6 @@ in {
       modules =
         [
           ../hosts/${hostName}/configuration.nix
-          inputs.nur.modules.nixos.default
           inputs."stylix${input-suffix}".nixosModules.stylix
           inputs."home-manager${input-suffix}".nixosModules.home-manager
           ({...}: {networking.hostName = hostName;})

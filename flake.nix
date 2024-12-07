@@ -43,7 +43,7 @@
     with internal.lib; {
       nixosConfigurations = {
         # voyager - home desktop
-        voyager = mkSystem "voyager" {};
+        voyager = mkSystem "voyager" {modules = [inputs.nur.modules.nixos.default];};
         # voyager2 - wsl on home desktop
         voyager2 = mkSystem "voyager2" {wsl = true;};
       };
