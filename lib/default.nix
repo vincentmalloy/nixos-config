@@ -15,11 +15,18 @@ in {
       then "-wsl"
       else "";
     additionalModules =
-      modules
-      ++ inputs.nixpkgs.lib.optionals wsl [
-        inputs.nixos-wsl.nixosModules.wsl
-        ({...}: {settings.isWSL = true;})
-      ];
+      if wsl
+      then
+        modules
+        ++ [
+          inputs.nixos-wsl.nixosModules.wsl
+          ({...}: {settings.isWSL = true;})
+        ]
+      else
+        modules
+        ++ [
+          # inputs.spicetify-nix.nixosModules.default
+        ];
   in
     inputs."nixpkgs${input-suffix}".lib.nixosSystem {
       inherit system;

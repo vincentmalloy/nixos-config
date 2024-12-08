@@ -12,6 +12,7 @@
     useUserPackages = true;
     users.${config.settings.username} = {
       imports = [
+        inputs.spicetify-nix.homeManagerModules.default
         ../../modules/home
         ./modules/home
       ];
