@@ -1,6 +1,7 @@
 {
   lib,
   osConfig,
+  config,
   pkgs,
   inputs,
   ...
@@ -20,7 +21,22 @@
       hidePodcasts
       shuffle # shuffle+ (special characters are sanitized out of extension names)
     ];
-    theme = spicePkgs.themes.text;
+    # custom text theme
+    theme = {
+      name = "base16scheme";
+      src = spicePkgs.themes.text.src;
+      sidebarConfig = false;
+      additionalCss =
+        /*
+        css
+        */
+        ''
+          :root {
+            --font-family: '${config.stylix.fonts.monospace.name}', monospace;
+          }
+        '';
+    };
+    # theme = spicePkgs.themes.text;
     colorScheme = "custom";
     customColorScheme = with osConfig.lib.stylix.colors; {
       text = base05;

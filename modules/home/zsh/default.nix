@@ -12,12 +12,51 @@
     history = {
       ignoreAllDups = true;
     };
-    shellAliases = {
-      nup = "pushd ${config.home.homeDirectory}/nixos-config;make update;popd";
-      nre = "pushd ${config.home.homeDirectory}/nixos-config;make;popd";
+    shellAliases = let
+      defaultNixPath = "/etc/nixos";
+      flakeIsLinked = "[[ ( -h ${defaultNixPath} && -f $(readlink -f ${defaultNixPath}/flake.nix) ) ]]";
+    in {
+      # nixos rebuild
+      nre =
+        /*
+        zsh
+        */
+        ''
+          if ${flakeIsLinked}
+          then
+            sudo nixos-rebuild switch
+          else
+            echo "no flake linked to ${defaultNixPath}"
+          fi
+        '';
+      nup =
+        /*
+        zsh
+        */
+        ''
+          if ${flakeIsLinked}
+          then
+            nix fmt $(readlink -f "${defaultNixPath}")
+            nix flake update --flake $(readlink -f "${defaultNixPath}")
+            sudo nixos-rebuild switch
+          else
+            echo "no flake linked to ${defaultNixPath}"
+          fi
+        '';
+      nconf =
+        /*
+        zsh
+        */
+        ''
+          if ${flakeIsLinked}
+          then
+            nvim $(readlink -f "${defaultNixPath}")
+          else
+            echo "no flake linked to ${defaultNixPath}"
+          fi
+        '';
       gg = "git add .;git commit -m \"update\";git push";
       c = "clear";
-      enix = "nvim ${config.home.homeDirectory}/nixos-config";
       caldav = "CALCURSE_CALDAV_PASSWORD=$(keepassxc-cli show -sa password ~/Nextcloud/Passwords/Passwords_Personal.kdbx \"web/hosting/things remote cloud\") calcurse-caldav";
     };
     initExtra =

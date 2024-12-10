@@ -20,6 +20,9 @@
         misc = {
           "disable_hyprland_logo" = true;
         };
+        windowrulev2 = [
+          "opacity 0.8,class:(Spotify)"
+        ];
         xwayland = {
           "force_zero_scaling" = true;
         };
