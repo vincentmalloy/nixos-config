@@ -2,14 +2,15 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   wayland.windowManager.hyprland = {
     settings = {
       # exec-once = [
       #   "[workspace special:quakemode silent]kitty"
       # ];
       workspace = [
-        "special:quakemode, monitor:HDMI-A-1, gapsin:0, gapsout:0, on-created-empty:$terminal"
+        "special:quakemode, monitor:$primaryMonitor, gapsin:0, gapsout:0, on-created-empty:$terminal"
         # "special:quakemode, monitor:HDMI-A-1, gapsin:0, gapsout:0"
       ];
       windowrulev2 = [

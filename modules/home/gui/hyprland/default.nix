@@ -4,7 +4,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./hyprpaper.nix
     ./hypridle.nix
@@ -19,15 +20,25 @@
       settings = {
         misc = {
           "disable_hyprland_logo" = true;
+          # "enable_swallow" = true;
+          # "swallow_regex" = "^(kitty)$";
         };
         windowrulev2 = [
           "opacity 0.8,class:(Spotify)"
+          # "fullscreen,class:^steam_app\\d+$"
+          # "monitor $primaryMonitor,class:^steam_app_\\d+$"
+          # "workspace 10,class:^steam_app_\\d+$"
+          # "float,class:^steam_app_\\d+$"
+          # "size 100% 100%,class:^steam_app_\\d+$"
+        ];
+        workspace = [
+          # "10, border:false, rounding:false, gapsin:0, gapsout:0"
         ];
         xwayland = {
           "force_zero_scaling" = true;
         };
         # TODO: remoce on stylix update
-        debug.suppress_errors = true;
+        debug.suppress_errors = false;
         exec-once = [
           "waybar"
           "hypridle"
@@ -72,14 +83,15 @@
             # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
             builtins.concatLists (
               builtins.genList (
-                i: let
+                i:
+                let
                   ws = i + 1;
-                in [
+                in
+                [
                   "$mod, code:1${toString i}, workspace, ${toString ws}"
                   "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
                 ]
-              )
-              9
+              ) 9
             )
           );
         bindm = [
@@ -98,7 +110,7 @@
           };
         };
         input = {
-          kb_layout = "us";
+          kb_layout = "eu";
         };
       };
       extraConfig = ''

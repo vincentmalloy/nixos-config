@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins = {
       lsp-lines = {
@@ -15,6 +16,9 @@
             enable = true;
           }; # json
           nil_ls = {
+            enable = false;
+          };
+          nixd = {
             enable = true;
           }; # nix
         };

@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   options.settings = with lib; {
     diskoDevice = mkOption {
       description = "disk device used in disko configuration";

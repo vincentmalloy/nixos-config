@@ -4,7 +4,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   home.file = {
     "${config.xdg.dataHome}/images/desktop".source = ../../../../images/desktop;
   };

@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 # let
 #   image = ../../../../../images/desktop/desktop_left.jpg;
 # in

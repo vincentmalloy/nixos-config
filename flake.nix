@@ -42,23 +42,25 @@
     hyprpaper.url = "github:hyprwm/hyprpaper";
   };
 
-  outputs = inputs @ {...}: let
-    internal.lib = import ./lib {inherit inputs;};
-  in
-    with internal.lib; {
+
+  outputs =
+    inputs@{ ... }:
+    let
+      internal.lib = import ./lib { inherit inputs; };
+    in
+    with internal.lib;
+    {
       nixosConfigurations = {
         # voyager - home desktop
-        voyager = mkSystem "voyager" {modules = [inputs.nur.modules.nixos.default];};
+        voyager = mkSystem "voyager" { modules = [ inputs.nur.modules.nixos.default ]; };
         # voyager2 - wsl on home desktop
-        voyager2 = mkSystem "voyager2" {wsl = true;};
+        voyager2 = mkSystem "voyager2" { wsl = true; };
       };
 
       formatter = eachSystem (
         system:
-          (inputs.treefmt-nix.lib.evalModule inputs.nixpkgs.legacyPackages.${system} ./treefmt.nix)
-          .config
-          .build
-          .wrapper
+        (inputs.treefmt-nix.lib.evalModule inputs.nixpkgs.legacyPackages.${system} ./treefmt.nix)
+        .config.build.wrapper
       );
     };
 }

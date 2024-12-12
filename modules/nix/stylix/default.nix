@@ -4,7 +4,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   stylix = {
     enable = true;
     # this default configuration can be overwritten in users home-configuration

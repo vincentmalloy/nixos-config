@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins.neo-tree = {
       enable = true;
@@ -19,7 +20,7 @@
     };
     keymaps = [
       {
-        mode = ["n"];
+        mode = [ "n" ];
         key = "<leader>e";
         action = ":Neotree action=focus reveal toggle <CR>";
         options = {

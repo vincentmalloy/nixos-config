@@ -1,6 +1,9 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./neo-tree.nix
+    ./comment.nix
+    ./hmts.nix
     ./lualine.nix
     ./lsp.nix
     ./telescope.nix

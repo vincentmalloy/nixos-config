@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   users.users.${config.settings.username} = {
     initialPassword = "1";
     packages = with pkgs; [

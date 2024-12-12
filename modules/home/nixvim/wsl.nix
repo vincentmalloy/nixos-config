@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   disabledModules = [
     ./plugins/lsp.nix
     ./plugins/treesitter.nix

@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   enableGui = osConfig.settings.enableGui;
-in {
+in
+{
   imports =
     [
       ./zsh
@@ -27,6 +29,7 @@ in {
     home = {
       packages = with pkgs; [
         # default user packages
+        tmux
       ];
       homeDirectory = lib.mkDefault "/home/${config.home.username}";
     };

@@ -2,7 +2,8 @@
   lib,
   osConfig,
   ...
-}: {
+}:
+{
   imports = [
     ./stylix.nix
     ./targets

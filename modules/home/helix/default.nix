@@ -2,7 +2,8 @@
   osConfig,
   config,
   ...
-}: {
+}:
+{
   home.sessionVariables = {
     EDITOR = "hx";
   };
@@ -15,7 +16,7 @@
         true-color = true;
         bufferline = "multiple";
         cursorline = true;
-        rulers = [120];
+        rulers = [ 120 ];
         cursor-shape = {
           insert = "bar";
           normal = "block";
@@ -24,6 +25,29 @@
         indent-guides = {
           render = true;
         };
+      };
+    };
+  };
+
+  programs.yazi = {
+    enable = true;
+    initLua = # lua
+      ''
+        function Status:render(area)
+          self.area = area
+          local line= ui.line { self:percentage(), self:position() }
+          return {
+            ui.Paragraph(area, { line }):align(ui.Paragraph.CENTER),
+          }
+        end
+      '';
+    settings = {
+      manager = {
+        ratio = [
+          0
+          4
+          0
+        ];
       };
     };
   };

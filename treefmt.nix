@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   projectRootFile = "flake.nix";
   settings = {
     verbose = 0;
@@ -7,5 +8,6 @@
       "Makefile"
     ];
   };
-  programs.alejandra.enable = true;
+  programs.nixfmt.enable = true;
+  # programs.alejandra.enable = true;
 }

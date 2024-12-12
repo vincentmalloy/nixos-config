@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;
@@ -28,14 +29,15 @@
           background-color: @theme_text_color;
         }
       '';
-    settings = let
-      allBars = {
-        reload_style_on_change = true;
-      };
-    in {
-      mainBar =
-        allBars
-        // {
+    settings =
+      let
+        allBars = {
+          reload_style_on_change = true;
+          # layer = "bottom";
+        };
+      in
+      {
+        mainBar = allBars // {
           output = "HDMI-A-1";
 
           modules-left = [
@@ -56,9 +58,7 @@
           };
         };
 
-      leftBar =
-        allBars
-        // {
+        leftBar = allBars // {
           output = "DP-2";
 
           modules-left = [
@@ -88,9 +88,7 @@
           };
         };
 
-      rightBar =
-        allBars
-        // {
+        rightBar = allBars // {
           output = "DP-3";
           modules-left = [
             "hyprland/workspaces"
@@ -103,6 +101,6 @@
             format = "{:%Y-%m-%d | %H:%M}";
           };
         };
-    };
+      };
   };
 }
