@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   home.sessionVariables = {
     DIRENV_LOG_FORMAT = "";
   };

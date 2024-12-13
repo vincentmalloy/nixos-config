@@ -2,8 +2,7 @@
   config,
   inputs,
   ...
-}:
-{
+}: {
   home-manager = {
     backupFileExtension = "backup";
     extraSpecialArgs = {

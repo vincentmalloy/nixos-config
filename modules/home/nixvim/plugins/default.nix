@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./neo-tree.nix
     ./comment.nix

@@ -2,8 +2,7 @@
   osConfig,
   config,
   ...
-}:
-{
+}: {
   # TODO: zsh settings
   programs.zsh = {
     enable = true;
@@ -13,49 +12,47 @@
     history = {
       ignoreAllDups = true;
     };
-    shellAliases =
-      let
-        defaultNixPath = "/etc/nixos";
-        flakeIsLinked = "[[ ( -h ${defaultNixPath} && -f $(readlink -f ${defaultNixPath}/flake.nix) ) ]]";
-      in
-      {
-        # nixos rebuild
-        nre =
-          # zsh
-          ''
-            if ${flakeIsLinked}
-            then
-              sudo nixos-rebuild switch
-            else
-              echo "no flake linked to ${defaultNixPath}"
-            fi
-          '';
-        nup =
-          # zsh
-          ''
-            if ${flakeIsLinked}
-            then
-              nix fmt $(readlink -f "${defaultNixPath}")
-              nix flake update --flake $(readlink -f "${defaultNixPath}")
-              sudo nixos-rebuild switch
-            else
-              echo "no flake linked to ${defaultNixPath}"
-            fi
-          '';
-        nconf =
-          # zsh
-          ''
-            if ${flakeIsLinked}
-            then
-              $EDITOR $(readlink -f "${defaultNixPath}")
-            else
-              echo "no flake linked to ${defaultNixPath}"
-            fi
-          '';
-        gg = "git add .;git commit -m \"update\";git push";
-        c = "clear";
-        caldav = "CALCURSE_CALDAV_PASSWORD=$(keepassxc-cli show -sa password ~/Nextcloud/Passwords/Passwords_Personal.kdbx \"web/hosting/things remote cloud\") calcurse-caldav";
-      };
+    shellAliases = let
+      defaultNixPath = "/etc/nixos";
+      flakeIsLinked = "[[ ( -h ${defaultNixPath} && -f $(readlink -f ${defaultNixPath}/flake.nix) ) ]]";
+    in {
+      # nixos rebuild
+      nre =
+        # zsh
+        ''
+          if ${flakeIsLinked}
+          then
+            sudo nixos-rebuild switch
+          else
+            echo "no flake linked to ${defaultNixPath}"
+          fi
+        '';
+      nup =
+        # zsh
+        ''
+          if ${flakeIsLinked}
+          then
+            cd $(readlink -f "${defaultNixPath}") && nix fmt && cd -
+            nix flake update --flake $(readlink -f "${defaultNixPath}")
+            sudo nixos-rebuild switch
+          else
+            echo "no flake linked to ${defaultNixPath}"
+          fi
+        '';
+      nconf =
+        # zsh
+        ''
+          if ${flakeIsLinked}
+          then
+            $EDITOR $(readlink -f "${defaultNixPath}")
+          else
+            echo "no flake linked to ${defaultNixPath}"
+          fi
+        '';
+      gg = "git add .;git commit -m \"update\";git push";
+      c = "clear";
+      caldav = "CALCURSE_CALDAV_PASSWORD=$(keepassxc-cli show -sa password ~/Nextcloud/Passwords/Passwords_Personal.kdbx \"web/hosting/things remote cloud\") calcurse-caldav";
+    };
     initExtra =
       # zsh
       ''

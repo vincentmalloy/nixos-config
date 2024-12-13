@@ -1,13 +1,14 @@
-{ ... }:
-{
+{...}: {
   projectRootFile = "flake.nix";
   settings = {
     verbose = 0;
     excludes = [
       "*.lock"
       "Makefile"
+      "*.jpg"
     ];
   };
-  programs.nixfmt.enable = true;
-  # programs.alejandra.enable = true;
+  programs.prettier.enable = true;
+  # programs.nixfmt.enable = true;
+  programs.alejandra.enable = true;
 }

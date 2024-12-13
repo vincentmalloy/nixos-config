@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   home.file = {
     "${config.xdg.configHome}/oh-my-posh/config.json".source = lib.mkForce ./config.json;
   };

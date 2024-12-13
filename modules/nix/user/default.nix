@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   programs.zsh.enable = true;
   users.users.${config.settings.username} = {
     isNormalUser = true;
@@ -16,6 +15,6 @@
     ];
     shell = pkgs.zsh;
   };
-  nix.settings.trusted-users = [ "${config.settings.username}" ];
+  nix.settings.trusted-users = ["${config.settings.username}"];
   security.sudo.wheelNeedsPassword = false;
 }

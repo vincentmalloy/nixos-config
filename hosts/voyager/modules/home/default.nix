@@ -4,11 +4,9 @@
   pkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   enableGui = osConfig.settings.enableGui;
-in
-{
+in {
   imports =
     [
       ./programs

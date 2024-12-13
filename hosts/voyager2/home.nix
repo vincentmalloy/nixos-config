@@ -2,8 +2,7 @@
   config,
   inputs,
   ...
-}:
-{
+}: {
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;

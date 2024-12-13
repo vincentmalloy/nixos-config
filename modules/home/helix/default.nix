@@ -2,8 +2,7 @@
   osConfig,
   config,
   ...
-}:
-{
+}: {
   home.sessionVariables = {
     EDITOR = "hx";
   };
@@ -16,7 +15,7 @@
         true-color = true;
         bufferline = "multiple";
         cursorline = true;
-        rulers = [ 120 ];
+        rulers = [120];
         cursor-shape = {
           insert = "bar";
           normal = "block";
@@ -31,7 +30,8 @@
 
   programs.yazi = {
     enable = true;
-    initLua = # lua
+    initLua =
+      # lua
       ''
         function Status:render(area)
           self.area = area

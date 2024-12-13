@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./quakemode.nix
     ./editing.nix

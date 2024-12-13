@@ -5,21 +5,18 @@
   pkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = osConfig.stylix;
-in
-{
+in {
   config = mkIf cfg.enable {
     stylix.targets.nixvim =
-      if osConfig.settings.isWSL then
-        { }
-      else
-        {
-          transparentBackground = {
-            main = true;
-            signColumn = false;
-          };
+      if osConfig.settings.isWSL
+      then {}
+      else {
+        transparentBackground = {
+          main = true;
+          signColumn = false;
         };
+      };
   };
 }

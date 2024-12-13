@@ -1,11 +1,11 @@
-{ ... }:
-{
+{...}: {
   nix = {
     settings = {
       warn-dirty = false;
       experimental-features = [
         "nix-command"
         "flakes"
+        "pipe-operators"
       ];
       # cachix
       substituters = [

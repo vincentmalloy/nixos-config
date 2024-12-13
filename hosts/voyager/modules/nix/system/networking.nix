@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   networking.networkmanager.enable = true;
 
   # Open ports in the firewall.

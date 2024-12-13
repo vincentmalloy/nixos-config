@@ -4,8 +4,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     ./hyprpaper.nix
     ./hypridle.nix
@@ -20,8 +19,8 @@
       settings = {
         misc = {
           "disable_hyprland_logo" = true;
-          # "enable_swallow" = true;
-          # "swallow_regex" = "^(kitty)$";
+          "enable_swallow" = true;
+          "swallow_regex" = "^(kitty)$";
         };
         windowrulev2 = [
           "opacity 0.8,class:(Spotify)"
@@ -83,15 +82,14 @@
             # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
             builtins.concatLists (
               builtins.genList (
-                i:
-                let
+                i: let
                   ws = i + 1;
-                in
-                [
+                in [
                   "$mod, code:1${toString i}, workspace, ${toString ws}"
                   "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
                 ]
-              ) 9
+              )
+              9
             )
           );
         bindm = [

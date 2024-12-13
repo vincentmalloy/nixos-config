@@ -3,8 +3,7 @@
   osConfig,
   pkgs,
   ...
-}:
-{
+}: {
   programs.firefox = {
     enable = true;
     profiles = {

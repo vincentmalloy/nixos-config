@@ -5,11 +5,9 @@
   pkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = osConfig.stylix;
-in
-{
+in {
   config = mkIf cfg.enable {
     stylix = {
       opacity = {
@@ -26,10 +24,9 @@ in
           # package = pkgs.nerdfonts.override {fonts = ["CommitMono"];};
           # will be in nerd-fonts namespace in nixos 25
           package =
-            if osConfig.settings.isWSL then
-              pkgs.nerdfonts.override { fonts = [ "CommitMono" ]; }
-            else
-              pkgs.nerd-fonts.commit-mono;
+            if osConfig.settings.isWSL
+            then pkgs.nerdfonts.override {fonts = ["CommitMono"];}
+            else pkgs.nerd-fonts.commit-mono;
           name = "CommitMono Nerd Font";
         };
         serif = config.stylix.fonts.monospace;

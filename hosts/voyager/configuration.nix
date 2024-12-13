@@ -3,8 +3,7 @@
   inputs,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     ./settings.nix
     ./hardware-configuration.nix
@@ -12,7 +11,7 @@
     ../../modules/nix
     ./modules/nix
     inputs.disko.nixosModules.default
-    (import ./disko.nix { device = config.settings.diskoDevice; })
+    (import ./disko.nix {device = config.settings.diskoDevice;})
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -26,7 +25,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
     # Modesetting is required.

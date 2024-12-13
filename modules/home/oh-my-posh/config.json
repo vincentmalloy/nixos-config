@@ -29,13 +29,9 @@
           "style": "accordion",
           "trailing_diamond": "\ue0b0",
           "foreground": "p:dark",
-          "foreground_templates": [
-            "{{ if .WSL }}white{{ end }}"
-          ],
+          "foreground_templates": ["{{ if .WSL }}white{{ end }}"],
           "background": "lightBlue",
-          "background_templates": [
-            "{{ if .WSL }}p:os-linux{{ end }}"
-          ],
+          "background_templates": ["{{ if .WSL }}p:os-linux{{ end }}"],
           "template": " {{.Icon}} ",
           "properties": {
             "windows": "\ue70f"
@@ -47,13 +43,9 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
           "foreground": "p:dark",
-          "foreground_templates": [
-            "{{ if .WSL }}white{{ end }}"
-          ],
+          "foreground_templates": ["{{ if .WSL }}white{{ end }}"],
           "background": "lightBlue",
-          "background-templates": [
-            "{{ if .WSL }}p:os-linux{{ end }}"
-          ],
+          "background-templates": ["{{ if .WSL }}p:os-linux{{ end }}"],
           "properties": {
             "mapped_shell_names": {
               "pwsh": "\udb82\ude0a"
@@ -67,9 +59,7 @@
           "powerline_symbol": "\ue0b0",
           "foreground": "p:foreground",
           "background": "p:background",
-          "background_templates": [
-            "{{ if not .Writable }}red{{ end }}"
-          ],
+          "background_templates": ["{{ if not .Writable }}red{{ end }}"],
           "properties": {
             "folder_icon": "\uea7c",
             "folder_separator_icon": " <transparent,p:background>\ue0bb</> ",
@@ -206,9 +196,7 @@
           "style": "powerline",
           "powerline_symbol": "\ue0d6",
           "foreground": "p:foreground",
-          "foreground_templates": [
-            "{{ if lt .Output 30 }}p:dark{{ end }}"
-          ],
+          "foreground_templates": ["{{ if lt .Output 30 }}p:dark{{ end }}"],
           "background": "p:background",
           "background_templates": [
             "{{ if lt .Output 30 }}green{{ end }}",
