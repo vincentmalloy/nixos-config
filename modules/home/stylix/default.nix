@@ -12,7 +12,8 @@
     [
     ]
     ++ lib.optionals osConfig.settings.isWSL [
-      "./targets/nixvim.nix"
+      ./targets/nixvim.nix
+      ./targets/spicetify.nix
     ];
 
   config = {

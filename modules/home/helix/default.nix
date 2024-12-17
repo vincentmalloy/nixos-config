@@ -30,25 +30,5 @@
 
   programs.yazi = {
     enable = true;
-    initLua =
-      # lua
-      ''
-        function Status:render(area)
-          self.area = area
-          local line= ui.line { self:percentage(), self:position() }
-          return {
-            ui.Paragraph(area, { line }):align(ui.Paragraph.CENTER),
-          }
-        end
-      '';
-    settings = {
-      manager = {
-        ratio = [
-          0
-          4
-          0
-        ];
-      };
-    };
   };
 }

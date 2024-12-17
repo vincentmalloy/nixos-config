@@ -1,59 +1,48 @@
-{inputs}: let
-  # supported systems
-  systems = ["x86_64-linux"];
-in {
-  # generate nixosConfiguration for a system with a given hostname
-  mkSystem = hostName: {
+{
+  inputs,
+  root,
+}: {
+  mkNixosConfiguration = {
+    hostName,
+    home-manager ? true,
     system ? "x86_64-linux",
     wsl ? false,
     modules ? [],
     args ? {},
   }: let
-    specialArgs =
-      {
-        inherit inputs;
-      }
-      // args;
-    input-suffix =
+    type =
       if wsl
       then "-wsl"
       else "";
-    additionalModules =
-      if wsl
-      then
-        modules
-        ++ [
-          inputs.nixos-wsl.nixosModules.wsl
-          (
-            {...}: {
-              settings.isWSL = true;
-            }
-          )
-        ]
-      else
-        modules
-        ++ [
-          inputs.nur.modules.nixos.default
-        ];
+    nixpkgs = inputs."nixpkgs${type}";
+    specialArgs = {inherit inputs;} // args;
+    additionalModules = (
+      modules
+      ++ nixpkgs.lib.optionals home-manager [
+        inputs."home-manager${type}".nixosModules.home-manager
+      ]
+      ++ nixpkgs.lib.optionals wsl [
+        inputs.nixos-wsl.nixosModules.wsl
+        {settings.isWSL = true;}
+      ]
+      ++ nixpkgs.lib.optionals (!wsl) [
+        inputs.nur.modules.nixos.default
+      ]
+    );
   in
-    inputs."nixpkgs${input-suffix}".lib.nixosSystem {
-      inherit system;
-      inherit specialArgs;
+    nixpkgs.lib.nixosSystem {
+      inherit system specialArgs;
       modules =
         [
-          ../hosts/${hostName}/configuration.nix
-          inputs."stylix${input-suffix}".nixosModules.stylix
-          inputs."home-manager${input-suffix}".nixosModules.home-manager
-          (
-            {...}: {
-              networking.hostName = hostName;
-            }
-          )
-          ../modules/nix
+          {networking.hostName = hostName;}
+          (root + /hosts/${hostName}/configuration.nix)
+          inputs."stylix${type}".nixosModules.stylix
+          (root + /modules/nix)
+          inputs.nur.modules.nixos.default
         ]
         ++ additionalModules;
     };
 
   # tool to iterate over each systems
-  eachSystem = inputs.nixpkgs.lib.genAttrs systems;
+  eachSystem = inputs.nixpkgs.lib.genAttrs (import inputs.systems);
 }

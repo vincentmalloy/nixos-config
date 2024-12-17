@@ -1,11 +1,6 @@
 {lib, ...}: {
   imports = [
     ./nixvim.nix
+    ./spicetify.nix
   ];
-
-  config = {
-    stylix.targets = {
-      spicetify.enable = false;
-    };
-  };
 }

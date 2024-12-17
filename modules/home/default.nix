@@ -19,9 +19,9 @@ in {
       ./programs
       ./helix
     ]
-    ++ (optionals enableGui [
+    ++ optionals enableGui [
       ./gui
-    ]);
+    ];
 
   config = {
     home = {
