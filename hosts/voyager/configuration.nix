@@ -2,17 +2,16 @@
   config,
   inputs,
   pkgs,
+  root,
   ...
 }: {
   imports = [
     ./settings.nix
     ./hardware-configuration.nix
     ./home.nix
-    ../../modules/nix
     ./modules/nix
     inputs.disko.nixosModules.default
     (import ./disko.nix {device = config.settings.diskoDevice;})
-    inputs.home-manager.nixosModules.home-manager
   ];
 
   system.stateVersion = "24.05";

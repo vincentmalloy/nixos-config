@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  root,
   ...
 }: {
   stylix = {
@@ -11,7 +12,7 @@
     polarity = "dark";
     # stylix needs an image to be set, we generate one here
     # image = config.lib.stylix.pixel "base01";
-    image = ../../../images/desktop/desktop_right.jpg;
+    image = root + /images/desktop/desktop_right.jpg;
     # image = "${config.home-manager.users.${config.settings.username}.xdg.dataHome}/images/desktop/desktop_right.jpg";
   };
 }

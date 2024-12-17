@@ -1,7 +1,4 @@
 {pkgs}:
-# let
-#   image = ../../../../../images/desktop/desktop_left.jpg;
-# in
 pkgs.stdenv.mkDerivation rec {
   name = "tokyo-night-sddm";
   version = "320c8e74";

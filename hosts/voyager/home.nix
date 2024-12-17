@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  root,
   ...
 }: {
   home-manager = {
@@ -13,7 +14,7 @@
     users.${config.settings.username} = {
       imports = [
         inputs.spicetify-nix.homeManagerModules.default
-        ../../modules/home
+        (root + /modules/home)
         ./modules/home
       ];
       home = {

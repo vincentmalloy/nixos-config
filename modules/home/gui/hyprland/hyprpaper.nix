@@ -3,10 +3,11 @@
   config,
   inputs,
   pkgs,
+  root,
   ...
 }: {
   home.file = {
-    "${config.xdg.dataHome}/images/desktop".source = ../../../../images/desktop;
+    "${config.xdg.dataHome}/images/desktop".source = root + /images/desktop;
   };
   services.hyprpaper = {
     enable = true;

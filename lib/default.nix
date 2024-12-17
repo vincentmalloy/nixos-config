@@ -1,7 +1,9 @@
 {
   inputs,
   root,
-}: {
+}: let
+  settings = import (root + /settings.nix);
+in {
   mkNixosConfiguration = {
     hostName,
     home-manager ? true,
@@ -15,17 +17,25 @@
       then "-wsl"
       else "";
     nixpkgs = inputs."nixpkgs${type}";
-    specialArgs = {inherit inputs;} // args;
-    additionalModules = (
+    specialArgs = {inherit inputs root;} // args;
+    additionalModules = with nixpkgs.lib; (
       modules
-      ++ nixpkgs.lib.optionals home-manager [
+      ++ optionals home-manager [
         inputs."home-manager${type}".nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = specialArgs;
+          home-manager.sharedModules = [
+            (root + /modules/settings)
+          ];
+        }
       ]
-      ++ nixpkgs.lib.optionals wsl [
+      ++ optionals wsl [
         inputs.nixos-wsl.nixosModules.wsl
         {settings.isWSL = true;}
       ]
-      ++ nixpkgs.lib.optionals (!wsl) [
+      ++ optionals (!wsl) [
         inputs.nur.modules.nixos.default
       ]
     );
@@ -35,6 +45,7 @@
       modules =
         [
           {networking.hostName = hostName;}
+          (root + /modules/settings)
           (root + /hosts/${hostName}/configuration.nix)
           inputs."stylix${type}".nixosModules.stylix
           (root + /modules/nix)

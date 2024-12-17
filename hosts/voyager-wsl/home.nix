@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  root,
   ...
 }: {
   home-manager = {
@@ -11,7 +12,7 @@
     useUserPackages = true;
     users.${config.settings.username} = {
       imports = [
-        ../../modules/home
+        (root + /modules/home)
       ];
       home = {
         username = config.settings.username;
