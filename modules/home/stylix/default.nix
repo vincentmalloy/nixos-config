@@ -1,5 +1,6 @@
 {
   lib,
+  myLib,
   osConfig,
   ...
 }: {
@@ -11,7 +12,7 @@
   disabledModules =
     [
     ]
-    ++ lib.optionals osConfig.settings.isWSL [
+    ++ lib.optionals (myLib.isWSL osConfig) [
       ./targets/nixvim.nix
       ./targets/spicetify.nix
     ];

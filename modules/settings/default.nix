@@ -28,11 +28,6 @@
       description = "colorscheme for nix-colors";
       type = with types; uniq str;
     };
-    isWSL = mkOption {
-      description = "config is for a WSL installation";
-      type = with types; bool;
-      default = false;
-    };
     enableGui = mkEnableOption {
       description = "enable Graphical user interface tools and programs";
       type = with types; bool;

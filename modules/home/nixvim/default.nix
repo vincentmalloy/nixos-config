@@ -1,12 +1,13 @@
 {
   lib,
+  myLib,
   config,
   osConfig,
   inputs,
   ...
 }: let
   nixvim-key =
-    if osConfig.settings.isWSL
+    if (myLib.isWSL osConfig)
     then "nixvim-wsl"
     else "nixvim";
 in {
@@ -19,7 +20,7 @@ in {
       ./keymaps.nix
       ./plugins
     ]
-    ++ lib.optionals osConfig.settings.isWSL [./wsl.nix];
+    ++ lib.optionals (myLib.isWSL osConfig) [./wsl.nix];
 
   config = {
     programs.nixvim = {

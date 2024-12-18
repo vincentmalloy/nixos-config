@@ -17,7 +17,18 @@ in {
       then "-wsl"
       else "";
     nixpkgs = inputs."nixpkgs${type}";
-    specialArgs = {inherit inputs root;} // args;
+    specialArgs = {
+      inherit inputs root;
+      myLib = {
+        isWSL = config: (
+          if (builtins.hasAttr "wsl" config)
+          then
+            config.wsl.enable
+          else
+            false
+        );
+      };
+    } // args;
     additionalModules = with nixpkgs.lib; (
       modules
       ++ optionals home-manager [
@@ -33,7 +44,6 @@ in {
       ]
       ++ optionals wsl [
         inputs.nixos-wsl.nixosModules.wsl
-        {settings.isWSL = true;}
       ]
       ++ optionals (!wsl) [
         inputs.nur.modules.nixos.default

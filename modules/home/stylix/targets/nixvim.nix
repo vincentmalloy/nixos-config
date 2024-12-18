@@ -1,5 +1,6 @@
 {
   lib,
+  myLib,
   config,
   osConfig,
   pkgs,
@@ -10,7 +11,7 @@ with lib; let
 in {
   config = mkIf cfg.enable {
     stylix.targets.nixvim =
-      if osConfig.settings.isWSL
+      if (myLib.isWSL osConfig)
       then {}
       else {
         transparentBackground = {

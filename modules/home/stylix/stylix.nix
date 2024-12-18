@@ -1,5 +1,6 @@
 {
   lib,
+  myLib,
   config,
   osConfig,
   pkgs,
@@ -21,10 +22,8 @@ in {
           applications = 11;
         };
         monospace = {
-          # package = pkgs.nerdfonts.override {fonts = ["CommitMono"];};
-          # will be in nerd-fonts namespace in nixos 25
           package =
-            if osConfig.settings.isWSL
+            if (myLib.isWSL osConfig)
             then pkgs.nerdfonts.override {fonts = ["CommitMono"];}
             else pkgs.nerd-fonts.commit-mono;
           name = "CommitMono Nerd Font";

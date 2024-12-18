@@ -1,4 +1,5 @@
 {
+  myLib,
   osConfig,
   config,
   ...
@@ -10,7 +11,7 @@
   programs.eza = {
     enable = true;
     icons =
-      if osConfig.settings.isWSL
+      if (myLib.isWSL osConfig)
       then true
       else "auto";
     extraOptions = [
