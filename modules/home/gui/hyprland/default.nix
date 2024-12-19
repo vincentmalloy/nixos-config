@@ -16,7 +16,11 @@
       enable = true;
       xwayland.enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      # plugins = [
+      #   inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprwinwrap
+      # ];
       settings = {
+        # plugin.hyprwinwrap.class = "kitty-bg";
         misc = {
           "disable_hyprland_logo" = true;
           "enable_swallow" = true;
