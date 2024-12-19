@@ -17,18 +17,18 @@ in {
       then "-wsl"
       else "";
     nixpkgs = inputs."nixpkgs${type}";
-    specialArgs = {
-      inherit inputs root;
-      myLib = {
-        isWSL = config: (
-          if (builtins.hasAttr "wsl" config)
-          then
-            config.wsl.enable
-          else
-            false
-        );
-      };
-    } // args;
+    specialArgs =
+      {
+        inherit inputs root;
+        myLib = {
+          isWSL = config: (
+            if (builtins.hasAttr "wsl" config)
+            then config.wsl.enable
+            else false
+          );
+        };
+      }
+      // args;
     additionalModules = with nixpkgs.lib; (
       modules
       ++ optionals home-manager [

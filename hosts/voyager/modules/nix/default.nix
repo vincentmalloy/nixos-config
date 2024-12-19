@@ -5,5 +5,6 @@
     ./software
     ./system
     ./user
+    ./gaming
   ];
 }
