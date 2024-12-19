@@ -4,80 +4,26 @@
   inputs = {
     # primary flake inputs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/x86_64-linux";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # neovim configuration module
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # hyprland window manager
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-    };
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-    };
-    # theme
-    stylix = {
-      url = "github:danth/stylix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
-    # spotify customisation
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
+    disko.url = "github:nix-community/disko";
+
+    nur.url = "github:nix-community/NUR";
+    nixvim.url = "github:nix-community/nixvim";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprpaper.url = "github:hyprwm/hyprpaper";
+    stylix.url = "github:danth/stylix";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     # inputs for nixos on wsl2
     nixpkgs-wsl.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs-wsl";
-    };
-    home-manager-wsl = {
-      url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs-wsl";
-    };
-    nixvim-wsl = {
-      url = "github:nix-community/nixvim/nixos-24.05";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-wsl";
-        home-manager.follows = "home-manager-wsl";
-      };
-    };
-    stylix-wsl = {
-      url = "github:danth/stylix/cf8b6e2d4e8aca8ef14b839a906ab5eb98b08561";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-wsl";
-        home-manager.follows = "home-manager-wsl";
-      };
-    };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    home-manager-wsl.url = "github:nix-community/home-manager/release-24.05";
+    nixvim-wsl.url = "github:nix-community/nixvim/nixos-24.05";
+    stylix-wsl.url = "github:danth/stylix/cf8b6e2d4e8aca8ef14b839a906ab5eb98b08561";
 
     # formatter
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs = inputs @ {...}: let
