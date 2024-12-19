@@ -1,6 +1,6 @@
-{...}: {
+{osConfig, config, ...}: {
   programs.nixvim = {
-      diagnostics = {
+    diagnostics = {
       virtual_lines.only_current_line = true;
       virtual_text = false;
     };
@@ -23,6 +23,16 @@
           };
           nixd = {
             enable = true;
+            extraOptions = {
+              options = {
+                nixos = {
+                  expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.${osConfig.networking.hostName}.options";
+                };
+                home-manager = {
+                  expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.${osConfig.networking.hostName}.home-manager.users.${config.home.username}.options";
+                };
+              };
+            };
           }; # nix
         };
       };

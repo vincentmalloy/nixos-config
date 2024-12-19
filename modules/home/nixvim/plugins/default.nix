@@ -2,6 +2,7 @@
   imports = [
     ./neo-tree.nix
     ./comment.nix
+    ./cmp.nix
     ./hmts.nix
     ./lualine.nix
     ./lsp.nix

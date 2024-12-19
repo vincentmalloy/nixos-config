@@ -31,8 +31,12 @@ in {
       extraConfigVim = ''
         set exrc
       '';
-      extraConfigLua = /* lua */''
-      '';
+      extraConfigLua =
+        /*
+        lua
+        */
+        ''
+        '';
     };
   };
 }
