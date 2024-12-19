@@ -1,4 +1,8 @@
-{osConfig, config, ...}: {
+{
+  osConfig,
+  config,
+  ...
+}: {
   programs.nixvim = {
     diagnostics = {
       virtual_lines.only_current_line = true;
