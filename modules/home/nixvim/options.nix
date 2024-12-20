@@ -5,7 +5,7 @@
       number = true;
 
       # enter digraphs with {char1} <BS> {char2}
-      digraph = true;
+      digraph = false;
 
       # tab width
       shiftwidth = 2;
