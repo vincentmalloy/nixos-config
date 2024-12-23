@@ -7,6 +7,7 @@
     systems.url = "github:nix-systems/x86_64-linux";
     home-manager.url = "github:nix-community/home-manager";
     disko.url = "github:nix-community/disko";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     nur.url = "github:nix-community/NUR";
     nixvim.url = "github:nix-community/nixvim";
@@ -28,33 +29,31 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = inputs @ {...}: let
+  outputs = inputs @ {flake-parts, ...}: let
     root = ./.;
     internal.lib = import ./lib {inherit inputs root;};
   in
-    with internal.lib; {
-      nixosConfigurations = {
-        # voyager - home desktop
-        voyager = mkNixosConfiguration {
-          hostName = "voyager";
+    with internal.lib;
+      flake-parts.lib.mkFlake {inherit inputs;} {
+        systems = import inputs.systems;
+        imports = [
+          inputs.treefmt-nix.flakeModule
+        ];
+        flake = {
+          nixosConfigurations = {
+            # voyager - home desktop
+            voyager = mkNixosConfiguration {
+              hostName = "voyager";
+            };
+            # voyager-wsl on home desktop
+            voyager-wsl = mkNixosConfiguration {
+              hostName = "voyager-wsl";
+              wsl = true;
+            };
+          };
         };
-        # voyager-wsl on home desktop
-        voyager-wsl = mkNixosConfiguration {
-          hostName = "voyager-wsl";
-          wsl = true;
+        perSystem = {...}: {
+          treefmt = import (root + /treefmt.nix);
         };
       };
-
-      nixosModules = {};
-
-      homeModules = {};
-
-      formatter = eachSystem (
-        system:
-          (inputs.treefmt-nix.lib.evalModule inputs.nixpkgs.legacyPackages.${system} ./treefmt.nix)
-          .config
-          .build
-          .wrapper
-      );
-    };
 }
